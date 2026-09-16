@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Kiran ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-main: #6a113c;
+            --accent: #ff4b82;
+            --accent-hover: #ff759c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 75, 130, 0.3);
+            font-size: 2rem;
+            animation: floatHeart 10s linear infinite;
+            bottom: -50px;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        header {
+            margin-top: 60px;
+            text-align: center;
+            animation: fadeInDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #d10047;
+            text-shadow: 2px 4px 10px rgba(209, 0, 71, 0.2);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #a41a4a;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        /* Romantic Glassmorphism Container */
+        .glass-panel {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(255, 75, 130, 0.15), inset 0 0 15px rgba(255,255,255,0.5);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-shadow: 1px 2px 4px rgba(255, 75, 130, 0.1);
+        }
+
+        /* Cute Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid #fff;
+            color: #d10047;
+            font-size: 1.2rem;
+            padding: 15px 45px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(255, 75, 130, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 75, 130, 0.4);
+            border-color: var(--accent-hover);
+        }
+
+        /* Dynamic Lists */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .year-btn {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px 35px;
+        }
+
+        .papers-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .papers-list li a {
+            display: block;
+            text-decoration: none;
+            color: #a41a4a;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 18px 25px;
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .papers-list li a::after {
+            content: '💖';
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .papers-list li a:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(10px);
+            border-left-color: #d10047;
+            box-shadow: 0 8px 20px rgba(255, 75, 130, 0.2);
+            color: #d10047;
+        }
+
+        .papers-list li a:hover::after {
+            transform: scale(1.3) rotate(15deg);
+            opacity: 1;
+        }
+
+        footer {
+            margin-bottom: 30px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #d10047;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            margin-bottom: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 0;
+            box-shadow: none;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            background: transparent;
+            color: #d10047;
+            box-shadow: none;
+            transform: translateX(-5px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <header>
+        <h1>Anything for you, Kiran ❤️</h1>
+        <p>You asked me to find all the previous year questions, so I gathered every single one of them just for you. Happy studying!</p>
+    </header>
+
+    <main>
+        <!-- Subject Selection -->
+        <div id="subject-section" class="glass-panel">
+            <h2 class="section-title">Which subject are you studying today?</h2>
+            <div class="btn-group">
+                <button onclick="showYears('physics')">🔬 Physics</button>
+                <button onclick="showYears('biology')">🧬 Biology</button>
+                <button onclick="showYears('chemistry')">🧪 Chemistry</button>
+            </div>
+        </div>
+
+        <!-- Year Selection -->
+        <div id="year-section" class="glass-panel hidden">
+            <button class="back-btn" onclick="goBack('subject-section')">← Pick another subject</button>
+            <h2 class="section-title" id="year-title">Select Year</h2>
+            <div class="btn-group" id="year-buttons">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Papers List -->
+        <div id="paper-section" class="glass-panel hidden">
+            <button class="back-btn" onclick="goBack('year-section')">← Choose a different year</button>
+            <h2 class="section-title" id="paper-title">Available Papers</h2>
+            <ul class="papers-list" id="papers-list">
+                <!-- Injected via JS -->
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ to make your life easier</p>
+    </footer>
+
+    <script>
+        // Generate floating hearts
+        const heartsContainer = document.getElementById('hearts-bg');
+        for(let i=0; i<15; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.2;
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            heartsContainer.appendChild(heart);
+        }
+
+        const data = {
+    physics: {
+        2023: [
+            { name: 'Set A', file: 'cg-board-class-12-physics-c-232201-a-2023.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-physics-c-232201-b-2023.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-physics-c-232201-c-2023.pdf' }
+        ],
+        2025: [
+            { name: 'Set A', file: 'cg-board-class-12-physics-i252201-a-2025.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-physics-i252201-b-2025.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-physics-i252201-c-2025.pdf' }
+        ],
+        2026: [
+            { name: 'Set A', file: 'cg-board-class-12-physics-s-262201-a-2026.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-physics-s-262201-b-2026.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-physics-s-262201-c-2026.pdf' }
+        ],
+        2022: [
+            { name: 'Set A', file: 'cg-board-class-12-physics-t-222201-a-2022.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-physics-t-222201-b-2022.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-physics-t-222201-c-2022.pdf' }
+        ]
+    },
+    biology: {
+        2023: [
+            { name: 'Set A', file: 'cg-board-class-12-biology-c-232203-803-a-2023.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-biology-c-232203-803-b-2023.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-biology-c-232203-803-c-2023.pdf' }
+        ],
+        2025: [
+            { name: 'Set A', file: 'cg-board-class-12-biology-i252203-803-a-2025.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-biology-i252203-803-b-2025.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-biology-i252203-803-c-2025.pdf' }
+        ],
+        2024: [
+            { name: 'Set A', file: 'cg-board-class-12-biology-l-242203-803-a-2024.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-biology-l-242203-803-b-2024.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-biology-l-242203-803-c-2024.pdf' }
+        ],
+        2026: [
+            { name: 'Set A', file: 'cg-board-class-12-biology-s-262203-803-a-2026.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-biology-s-262203-803-b-2026.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-biology-s-262203-803-c-2026.pdf' }
+        ],
+        2022: [
+            { name: 'Set A', file: 'cg-board-class-12-biology-t-222203-803-a-2022.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-biology-t-222203-803-c-2022.pdf' }
+        ]
+    },
+    chemistry: {
+        2023: [
+            { name: 'Set A', file: 'cg-board-class-12-chemistry-c-232202-a-2023.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-chemistry-c-232202-b-2023.pdf' }
+        ],
+        2025: [
+            { name: 'Set A', file: 'cg-board-class-12-chemistry-i252202-a-2025.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-chemistry-i252202-b-2025.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-chemistry-i252202-c-2025.pdf' }
+        ],
+        2024: [
+            { name: 'Set A', file: 'cg-board-class-12-chemistry-l-242202-a-2024.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-chemistry-l-242202-b-2024.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-chemistry-l-242202-c-2024.pdf' }
+        ],
+        2026: [
+            { name: 'Set A', file: 'cg-board-class-12-chemistry-s-262202-a-2026.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-chemistry-s-262202-b-2026.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-chemistry-s-262202-c-2026.pdf' }
+        ],
+        2022: [
+            { name: 'Set A', file: 'cg-board-class-12-chemistry-t-222202-a-2022.pdf' },
+            { name: 'Set B', file: 'cg-board-class-12-chemistry-t-222202-b-2022.pdf' },
+            { name: 'Set C', file: 'cg-board-class-12-chemistry-t-222202-c-2022.pdf' }
+        ]
+    }
+};
+
+        let currentSubject = '';
+
+        function hideAll() {
+            document.getElementById('subject-section').classList.add('hidden');
+            document.getElementById('year-section').classList.add('hidden');
+            document.getElementById('paper-section').classList.add('hidden');
+            
+            document.getElementById('subject-section').classList.remove('fade-in');
+            document.getElementById('year-section').classList.remove('fade-in');
+            document.getElementById('paper-section').classList.remove('fade-in');
+        }
+
+        function showSection(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('hidden');
+            void el.offsetWidth;
+            el.classList.add('fade-in');
+        }
+
+        function showYears(subject) {
+            currentSubject = subject;
+            hideAll();
+            
+            const subjectName = subject.charAt(0).toUpperCase() + subject.slice(1);
+            document.getElementById('year-title').innerText = subjectName + " Papers";
+            
+            const yearContainer = document.getElementById('year-buttons');
+            yearContainer.innerHTML = '';
+            
+            const years = Object.keys(data[subject]).sort((a, b) => b - a);
+            
+            years.forEach(year => {
+                const btn = document.createElement('button');
+                btn.className = 'year-btn';
+                btn.innerText = "Year " + year;
+                btn.onclick = () => showPapers(year);
+                yearContainer.appendChild(btn);
+            });
+            
+            showSection('year-section');
+        }
+
+        function showPapers(year) {
+            hideAll();
+            
+            const subjectName = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+            document.getElementById('paper-title').innerText = subjectName + " (" + year + ")";
+            
+            const listContainer = document.getElementById('papers-list');
+            listContainer.innerHTML = '';
+            
+            const papers = data[currentSubject][year];
+            papers.forEach(paper => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = paper.file;
+                a.target = "_blank";
+                a.innerText = paper.name;
+                li.appendChild(a);
+                listContainer.appendChild(li);
+            });
+            
+            showSection('paper-section');
+        }
+
+        function goBack(targetId) {
+            hideAll();
+            showSection(targetId);
+        }
+
+    </script>
+</body>
+</html>
