@@ -3,83 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Kiran ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>CG Board Class 12 Papers • Only for Kiran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            --glass-bg: rgba(255, 255, 255, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --text-main: #6a113c;
-            --accent: #ff4b82;
-            --accent-hover: #ff759c;
+            --bg-body: #FAF6F0;
+            --bg-card: #FFFFFF;
+            --bg-panel: #FFFFFF;
+            --border-color: #E8DFD1;
+            --border-hover: #C5B49D;
+            --text-primary: #3E2723;
+            --text-secondary: #6D4C41;
+            --text-muted: #8D6E63;
+            --accent-primary: #6D4C41;
+            --accent-hover: #4E342E;
+            --accent-light: #F3ECE1;
+            --badge-bg: #F3ECE1;
+            --badge-text: #4E342E;
+            --shadow-subtle: 0 4px 16px rgba(62, 39, 35, 0.05);
+            --shadow-hover: 0 8px 24px rgba(62, 39, 35, 0.1);
+            --star-active: #D97706;
+            --kiran-tag: #8C5A3C;
+        }
+
+        [data-theme="night"] {
+            --bg-body: #181210;
+            --bg-card: #241C18;
+            --bg-panel: #241C18;
+            --border-color: #3B2E28;
+            --border-hover: #5C4A42;
+            --text-primary: #F5EFE6;
+            --text-secondary: #D7CCC8;
+            --text-muted: #A1887F;
+            --accent-primary: #A1887F;
+            --accent-hover: #EFEBE9;
+            --accent-light: #2E231F;
+            --badge-bg: #332722;
+            --badge-text: #EFEBE9;
+            --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.35);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.55);
+            --star-active: #F59E0B;
+            --kiran-tag: #D7CCC8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
         }
 
         body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-main);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Floating Hearts Background */
-        .hearts-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Top Navigation Bar */
+        .top-bar {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px 0;
+            position: relative;
+            z-index: 10;
         }
 
-        .heart {
-            position: absolute;
-            color: rgba(255, 75, 130, 0.3);
-            font-size: 2rem;
-            animation: floatHeart 10s linear infinite;
-            bottom: -50px;
+        .theme-btn, .fav-toggle-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        @keyframes floatHeart {
-            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        .theme-btn:hover, .fav-toggle-btn:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF !important;
+            border-color: var(--accent-primary);
         }
 
+        /* Header */
         header {
-            margin-top: 60px;
+            margin-top: 16px;
             text-align: center;
-            animation: fadeInDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding: 0 20px;
+            animation: fadeInDown 0.6s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .kiran-top-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--badge-bg);
+            color: var(--kiran-tag);
+            border: 1px solid var(--border-color);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
         }
 
         header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 5rem;
-            color: #d10047;
-            text-shadow: 2px 4px 10px rgba(209, 0, 71, 0.2);
-            margin-bottom: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            line-height: 1.15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
-        header p {
-            font-size: 1.2rem;
+        header p.subtitle {
+            font-size: 0.95rem;
             font-weight: 400;
-            color: #a41a4a;
+            color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.5;
+        }
+
+        /* Minimal Stats Pill */
+        .stats-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 6px 20px;
+            border-radius: 24px;
+            margin-top: 16px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            box-shadow: var(--shadow-subtle);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item i {
+            color: var(--accent-primary);
+        }
+
+        /* Search Bar */
+        .search-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 22px 0 10px;
+            position: relative;
+            z-index: 5;
+            padding: 0 20px;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-color);
+            padding: 14px 20px 14px 48px;
+            border-radius: 24px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            outline: none;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-primary);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--badge-bg);
+            border: none;
+            color: var(--text-secondary);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .clear-search:hover {
+            background: var(--accent-primary);
+            color: white;
         }
 
         main {
@@ -88,372 +250,1018 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 800px;
-            padding: 40px 20px;
+            max-width: 900px;
+            padding: 10px 20px 40px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Romantic Glassmorphism Container */
-        .glass-panel {
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 40px;
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(255, 75, 130, 0.15), inset 0 0 15px rgba(255,255,255,0.5);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .breadcrumb-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .breadcrumb-item:hover {
+            color: var(--accent-primary);
+        }
+
+        .breadcrumb-sep {
+            opacity: 0.4;
+            font-size: 0.75rem;
+        }
+
+        .breadcrumb-active {
+            color: var(--text-primary);
+            font-weight: 700;
+            cursor: default;
+        }
+
+        /* Content Panel */
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px 24px;
+            width: 100%;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
             text-align: center;
             margin-bottom: 20px;
         }
 
         .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--accent);
-            text-shadow: 1px 2px 4px rgba(255, 75, 130, 0.1);
-        }
-
-        /* Cute Buttons */
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            background: rgba(255, 255, 255, 0.6);
-            border: 2px solid #fff;
-            color: #d10047;
-            font-size: 1.2rem;
-            padding: 15px 45px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            font-weight: 600;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 20px rgba(255, 75, 130, 0.15);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        button:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 25px rgba(255, 75, 130, 0.4);
-            border-color: var(--accent-hover);
+        /* Responsive 5-Column Grid for Subjects */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            width: 100%;
+            margin-top: 10px;
         }
 
-        /* Dynamic Lists */
+        @media (max-width: 820px) {
+            .subject-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .subject-card {
+            background: var(--bg-body);
+            border: 1.5px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .subject-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--badge-bg);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            transition: transform 0.25s ease;
+        }
+
+        .subject-card:hover .subject-icon-box {
+            transform: scale(1.1);
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        .subject-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .subject-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-card {
+            background: var(--bg-body);
+            border: 1.5px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .category-card:hover {
+            background: var(--bg-card);
+            transform: translateY(-3px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-icon-bg {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--badge-bg);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+
+        .category-card:hover .category-icon-bg {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        .category-details h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .category-details p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Year Grid Buttons */
+        .year-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .year-btn {
+            background: var(--bg-body);
+            border: 1.5px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 10px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .year-btn:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF !important;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .year-count {
+            font-size: 0.74rem;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        /* Sets / Papers List */
+        .sets-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .set-card {
+            background: var(--bg-body);
+            border: 1.5px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: 16px;
+            border-left: 5px solid var(--accent-primary);
+            transition: all 0.25s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .set-card:hover {
+            background: var(--bg-card);
+            transform: translateX(4px);
+            border-color: var(--border-hover);
+            border-left-color: var(--accent-primary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .set-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .set-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .set-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .set-code-tag {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            background: rgba(109, 76, 65, 0.08);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .set-meta {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .badge-cat {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.78rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .action-btns {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Direct PDF Open Link Button */
+        .btn-direct-pdf {
+            text-decoration: none;
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            padding: 9px 18px;
+            border-radius: 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-direct-pdf:hover {
+            background: var(--accent-hover);
+            transform: scale(1.03);
+        }
+
+        .btn-copy-link {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy-link:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            border-color: var(--accent-primary);
+            transform: scale(1.08);
+        }
+
+        .fav-btn {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--border-hover);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 4px;
+        }
+
+        .fav-btn:hover, .fav-btn.active {
+            color: var(--star-active);
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: transparent !important;
+            border: none !important;
+            color: var(--accent-primary) !important;
+            margin-bottom: 16px;
+            cursor: pointer;
+            font-size: 0.92rem;
+            box-shadow: none !important;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-hover) !important;
+            transform: translateX(-4px) !important;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-primary);
+            color: var(--bg-body);
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Utility classes */
         .hidden {
             display: none !important;
         }
 
         .fade-in {
-            animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: fadeIn 0.3s ease forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
+            from { opacity: 0; transform: translateY(-14px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .year-btn {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 12px 35px;
-        }
-
-        .papers-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .papers-list li a {
-            display: block;
-            text-decoration: none;
-            color: #a41a4a;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 18px 25px;
-            border-radius: 20px;
-            border-left: 5px solid var(--accent);
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .papers-list li a::after {
-            content: '💖';
-            font-size: 1.2rem;
-            opacity: 0.7;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .papers-list li a:hover {
-            background: rgba(255, 255, 255, 0.8);
-            transform: translateX(10px);
-            border-left-color: #d10047;
-            box-shadow: 0 8px 20px rgba(255, 75, 130, 0.2);
-            color: #d10047;
-        }
-
-        .papers-list li a:hover::after {
-            transform: scale(1.3) rotate(15deg);
-            opacity: 1;
-        }
-
         footer {
-            margin-bottom: 30px;
+            margin-top: auto;
+            padding: 20px;
             text-align: center;
-            opacity: 0.8;
-            font-size: 1rem;
-            font-weight: 400;
-            color: #d10047;
+            opacity: 0.85;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 2;
         }
 
-        .back-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent);
-            margin-bottom: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
-            padding: 0;
-            box-shadow: none;
-            font-weight: 600;
+        @media (max-width: 600px) {
+            .glass-panel {
+                padding: 20px 14px;
+                border-radius: 16px;
+            }
+            .set-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 14px;
+            }
+            .action-btns {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 8px;
+            }
+            .btn-direct-pdf {
+                flex: 1;
+                justify-content: center;
+            }
         }
-        
-        .back-btn:hover {
-            background: transparent;
-            color: #d10047;
-            box-shadow: none;
-            transform: translateX(-5px);
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="hearts-bg" id="hearts-bg"></div>
+    <!-- Toast Popup -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i> <span id="toast-msg">Copied to clipboard!</span>
+    </div>
+
+    <div class="top-bar">
+        <button class="fav-toggle-btn" id="favToggleBtn" onclick="toggleFavsView()">
+            <i class="fa-solid fa-star"></i> Saved Papers (<span id="favCount">0</span>)
+        </button>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+            <i class="fa-solid fa-moon"></i> Night Mode
+        </button>
+    </div>
 
     <header>
-        <h1>Anything for you, Kiran ❤️</h1>
-        <p>You asked me to find all the previous year questions, so I gathered every single one of them just for you. Happy studying!</p>
+        <div class="kiran-top-tag">
+            <i class="fa-solid fa-heart"></i> Only for Kiran
+        </div>
+        <h1><i class="fa-solid fa-graduation-cap"></i> CG Board Class 12 Papers</h1>
+        <p class="subtitle">Previous year question papers for Physics, Biology, Chemistry, Hindi & English</p>
+        
+        <div class="stats-pill">
+            <span class="stat-item"><i class="fa-solid fa-atom"></i> Physics (51)</span>
+            <span>•</span>
+            <span class="stat-item"><i class="fa-solid fa-dna"></i> Biology (44)</span>
+            <span>•</span>
+            <span class="stat-item"><i class="fa-solid fa-flask-vial"></i> Chemistry (51)</span>
+            <span>•</span>
+            <span class="stat-item"><i class="fa-solid fa-feather-pointed"></i> Hindi (62)</span>
+            <span>•</span>
+            <span class="stat-item"><i class="fa-solid fa-book-open"></i> English (57)</span>
+            <span>•</span>
+            <span class="stat-item"><i class="fa-solid fa-folder"></i> 265 Papers</span>
+        </div>
     </header>
 
+    <!-- Quick Search Bar -->
+    <div class="search-container">
+        <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Quick search any paper, year, or set (e.g., 2026 Set A, Physics, Chemistry, Pre-board)..." oninput="handleSearch()">
+            <button id="clearSearchBtn" class="clear-search" onclick="clearSearch()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
     <main>
-        <!-- Subject Selection -->
+        <!-- Breadcrumb navigation -->
+        <div class="breadcrumb" id="breadcrumb">
+            <span class="breadcrumb-item breadcrumb-active" onclick="goHome()"><i class="fa-solid fa-house"></i> Home</span>
+        </div>
+
+        <!-- SEARCH RESULTS PANEL -->
+        <div id="search-section" class="glass-panel hidden">
+            <h2 class="section-title"><i class="fa-solid fa-magnifying-glass"></i> Search Results</h2>
+            <p style="color:var(--text-muted); margin-bottom: 18px;" id="search-subtitle"></p>
+            <div class="sets-list" id="search-results-list"></div>
+        </div>
+
+        <!-- STEP 1: Select Subject -->
         <div id="subject-section" class="glass-panel">
-            <h2 class="section-title">Which subject are you studying today?</h2>
-            <div class="btn-group">
-                <button onclick="showYears('physics')">🔬 Physics</button>
-                <button onclick="showYears('biology')">🧬 Biology</button>
-                <button onclick="showYears('chemistry')">🧪 Chemistry</button>
+            <h2 class="section-title"><i class="fa-solid fa-book-bookmark"></i> Select Subject</h2>
+            
+            <div class="subject-grid">
+                <div class="subject-card" onclick="selectSubject('Physics')">
+                    <div class="subject-icon-box"><i class="fa-solid fa-atom"></i></div>
+                    <div class="subject-name">Physics</div>
+                    <div class="subject-badge">51 Papers</div>
+                </div>
+
+                <div class="subject-card" onclick="selectSubject('Biology')">
+                    <div class="subject-icon-box"><i class="fa-solid fa-dna"></i></div>
+                    <div class="subject-name">Biology</div>
+                    <div class="subject-badge">44 Papers</div>
+                </div>
+
+                <div class="subject-card" onclick="selectSubject('Chemistry')">
+                    <div class="subject-icon-box"><i class="fa-solid fa-flask-vial"></i></div>
+                    <div class="subject-name">Chemistry</div>
+                    <div class="subject-badge">51 Papers</div>
+                </div>
+
+                <div class="subject-card" onclick="selectSubject('Hindi')">
+                    <div class="subject-icon-box"><i class="fa-solid fa-feather-pointed"></i></div>
+                    <div class="subject-name">Hindi</div>
+                    <div class="subject-badge">62 Papers</div>
+                </div>
+
+                <div class="subject-card" onclick="selectSubject('English')">
+                    <div class="subject-icon-box"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="subject-name">English</div>
+                    <div class="subject-badge">57 Papers</div>
+                </div>
             </div>
         </div>
 
-        <!-- Year Selection -->
+        <!-- STEP 2: Select Category -->
+        <div id="category-section" class="glass-panel hidden">
+            <button class="back-btn" onclick="goHome()"><i class="fa-solid fa-arrow-left"></i> Back to Subjects</button>
+            <h2 class="section-title" id="category-title"><i class="fa-solid fa-folder-tree"></i> Select Category</h2>
+            <div class="category-grid" id="category-buttons">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- STEP 3: Select Year -->
         <div id="year-section" class="glass-panel hidden">
-            <button class="back-btn" onclick="goBack('subject-section')">← Pick another subject</button>
-            <h2 class="section-title" id="year-title">Select Year</h2>
-            <div class="btn-group" id="year-buttons">
+            <button class="back-btn" onclick="goBackToCategory()"><i class="fa-solid fa-arrow-left"></i> Back to Categories</button>
+            <h2 class="section-title" id="year-title"><i class="fa-solid fa-calendar"></i> Select Year</h2>
+            <div class="year-grid" id="year-buttons">
                 <!-- Injected via JS -->
             </div>
         </div>
 
-        <!-- Papers List -->
-        <div id="paper-section" class="glass-panel hidden">
-            <button class="back-btn" onclick="goBack('year-section')">← Choose a different year</button>
-            <h2 class="section-title" id="paper-title">Available Papers</h2>
-            <ul class="papers-list" id="papers-list">
+        <!-- STEP 4: Select Set / Open PDF -->
+        <div id="set-section" class="glass-panel hidden">
+            <button class="back-btn" id="set-back-btn" onclick="goBackToYear()"><i class="fa-solid fa-arrow-left"></i> Back to Years</button>
+            <h2 class="section-title" id="set-title"><i class="fa-solid fa-file-pdf"></i> Available Papers</h2>
+            <div class="sets-list" id="sets-list">
                 <!-- Injected via JS -->
-            </ul>
+            </div>
         </div>
     </main>
 
-    <footer>
-        <p>Made with ❤️ to make your life easier</p>
-    </footer>
+    <footer><p>CG Board Class 12 Question Papers Archive • Prepared for Kiran</p></footer>
 
     <script>
-        // Generate floating hearts
-        const heartsContainer = document.getElementById('hearts-bg');
-        for(let i=0; i<15; i++) {
-            let heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            heart.style.animationDelay = (Math.random() * 5) + 's';
-            heart.style.opacity = Math.random() * 0.5 + 0.2;
-            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-            heartsContainer.appendChild(heart);
-        }
-
-        const data = {
-    physics: {
-        2023: [
-            { name: 'Set A', file: 'cg-board-class-12-physics-c-232201-a-2023.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-physics-c-232201-b-2023.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-physics-c-232201-c-2023.pdf' }
-        ],
-        2025: [
-            { name: 'Set A', file: 'cg-board-class-12-physics-i252201-a-2025.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-physics-i252201-b-2025.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-physics-i252201-c-2025.pdf' }
-        ],
-        2026: [
-            { name: 'Set A', file: 'cg-board-class-12-physics-s-262201-a-2026.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-physics-s-262201-b-2026.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-physics-s-262201-c-2026.pdf' }
-        ],
-        2022: [
-            { name: 'Set A', file: 'cg-board-class-12-physics-t-222201-a-2022.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-physics-t-222201-b-2022.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-physics-t-222201-c-2022.pdf' }
-        ]
-    },
-    biology: {
-        2023: [
-            { name: 'Set A', file: 'cg-board-class-12-biology-c-232203-803-a-2023.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-biology-c-232203-803-b-2023.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-biology-c-232203-803-c-2023.pdf' }
-        ],
-        2025: [
-            { name: 'Set A', file: 'cg-board-class-12-biology-i252203-803-a-2025.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-biology-i252203-803-b-2025.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-biology-i252203-803-c-2025.pdf' }
-        ],
-        2024: [
-            { name: 'Set A', file: 'cg-board-class-12-biology-l-242203-803-a-2024.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-biology-l-242203-803-b-2024.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-biology-l-242203-803-c-2024.pdf' }
-        ],
-        2026: [
-            { name: 'Set A', file: 'cg-board-class-12-biology-s-262203-803-a-2026.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-biology-s-262203-803-b-2026.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-biology-s-262203-803-c-2026.pdf' }
-        ],
-        2022: [
-            { name: 'Set A', file: 'cg-board-class-12-biology-t-222203-803-a-2022.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-biology-t-222203-803-c-2022.pdf' }
-        ]
-    },
-    chemistry: {
-        2023: [
-            { name: 'Set A', file: 'cg-board-class-12-chemistry-c-232202-a-2023.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-chemistry-c-232202-b-2023.pdf' }
-        ],
-        2025: [
-            { name: 'Set A', file: 'cg-board-class-12-chemistry-i252202-a-2025.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-chemistry-i252202-b-2025.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-chemistry-i252202-c-2025.pdf' }
-        ],
-        2024: [
-            { name: 'Set A', file: 'cg-board-class-12-chemistry-l-242202-a-2024.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-chemistry-l-242202-b-2024.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-chemistry-l-242202-c-2024.pdf' }
-        ],
-        2026: [
-            { name: 'Set A', file: 'cg-board-class-12-chemistry-s-262202-a-2026.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-chemistry-s-262202-b-2026.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-chemistry-s-262202-c-2026.pdf' }
-        ],
-        2022: [
-            { name: 'Set A', file: 'cg-board-class-12-chemistry-t-222202-a-2022.pdf' },
-            { name: 'Set B', file: 'cg-board-class-12-chemistry-t-222202-b-2022.pdf' },
-            { name: 'Set C', file: 'cg-board-class-12-chemistry-t-222202-c-2022.pdf' }
-        ]
-    }
-};
+        const fullDataset = [{"id":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-A-2026","title":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-A-2026","display_title":"Biology 2026 (Set A) - S 262203 803 A 2026","subject":"Biology","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-a-2026.pdf","pdf_filename":"cg-board-class-12-biology-s-262203-803-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-B-2026","title":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-B-2026","display_title":"Biology 2026 (Set B) - S 262203 803 B 2026","subject":"Biology","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-b-2026.pdf","pdf_filename":"cg-board-class-12-biology-s-262203-803-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-C-2026","title":"CG-BOARD-CLASS-12-BIOLOGY-S-262203-803-C-2026","display_title":"Biology 2026 (Set C) - S 262203 803 C 2026","subject":"Biology","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-s-262203-803-c-2026.pdf","pdf_filename":"cg-board-class-12-biology-s-262203-803-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-SS-262203-803-A-2026","title":"CG-BOARD-CLASS-12-BIOLOGY-SS-262203-803-A-2026","display_title":"Biology 2026 (Set A) - SS 262203 803 A 2026","subject":"Biology","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-ss-262203-803-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-ss-262203-803-a-2026.pdf","pdf_filename":"cg-board-class-12-biology-ss-262203-803-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-A-2026","title":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-A-2026","display_title":"Chemistry 2026 (Set A) - S 262202 A 2026","subject":"Chemistry","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-a-2026.pdf","pdf_filename":"cg-board-class-12-chemistry-s-262202-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-B-2026","title":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-B-2026","display_title":"Chemistry 2026 (Set B) - S 262202 B 2026","subject":"Chemistry","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-b-2026.pdf","pdf_filename":"cg-board-class-12-chemistry-s-262202-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-C-2026","title":"CG-BOARD-CLASS-12-CHEMISTRY-S-262202-C-2026","display_title":"Chemistry 2026 (Set C) - S 262202 C 2026","subject":"Chemistry","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-s-262202-c-2026.pdf","pdf_filename":"cg-board-class-12-chemistry-s-262202-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-A-2026","title":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-A-2026","display_title":"English 2026 (Set A) - S 262020 820 A 2026","subject":"English","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-a-2026.pdf","pdf_filename":"cg-board-class-12-english-s-262020-820-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-B-2026","title":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-B-2026","display_title":"English 2026 (Set B) - S 262020 820 B 2026","subject":"English","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-b-2026.pdf","pdf_filename":"cg-board-class-12-english-s-262020-820-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-C-2026","title":"CG-BOARD-CLASS-12-ENGLISH-S-262020-820-C-2026","display_title":"English 2026 (Set C) - S 262020 820 C 2026","subject":"English","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-s-262020-820-c-2026.pdf","pdf_filename":"cg-board-class-12-english-s-262020-820-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-S-262010-810-A-2026","title":"CG-BOARD-CLASS-12-HINDI-S-262010-810-A-2026","display_title":"Hindi 2026 (Set A) - S 262010 810 A 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-a-2026.pdf","pdf_filename":"cg-board-class-12-hindi-s-262010-810-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-S-262010-810-B-2026","title":"CG-BOARD-CLASS-12-HINDI-S-262010-810-B-2026","display_title":"Hindi 2026 (Set B) - S 262010 810 B 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-b-2026.pdf","pdf_filename":"cg-board-class-12-hindi-s-262010-810-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-S-262010-810-C-2026","title":"CG-BOARD-CLASS-12-HINDI-S-262010-810-C-2026","display_title":"Hindi 2026 (Set C) - S 262010 810 C 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-s-262010-810-c-2026.pdf","pdf_filename":"cg-board-class-12-hindi-s-262010-810-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SS-262010-810-A-2026","title":"CG-BOARD-CLASS-12-HINDI-SS-262010-810-A-2026","display_title":"Hindi 2026 (Set A) - SS 262010 810 A 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-ss-262010-810-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-ss-262010-810-a-2026.pdf","pdf_filename":"cg-board-class-12-hindi-ss-262010-810-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-262010-810-A-2026","title":"CG-BOARD-CLASS-12-HINDI-T-262010-810-A-2026","display_title":"Hindi 2026 (Set A) - T 262010 810 A 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-a-2026.pdf","pdf_filename":"cg-board-class-12-hindi-t-262010-810-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-262010-810-B-2026","title":"CG-BOARD-CLASS-12-HINDI-T-262010-810-B-2026","display_title":"Hindi 2026 (Set B) - T 262010 810 B 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-b-2026.pdf","pdf_filename":"cg-board-class-12-hindi-t-262010-810-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-262010-810-C-2026","title":"CG-BOARD-CLASS-12-HINDI-T-262010-810-C-2026","display_title":"Hindi 2026 (Set C) - T 262010 810 C 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-262010-810-c-2026.pdf","pdf_filename":"cg-board-class-12-hindi-t-262010-810-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-S-262201-A-2026","title":"CG-BOARD-CLASS-12-PHYSICS-S-262201-A-2026","display_title":"Physics 2026 (Set A) - S 262201 A 2026","subject":"Physics","category":"Final Board Papers","year":"2026","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-a-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-a-2026.pdf","pdf_filename":"cg-board-class-12-physics-s-262201-a-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-S-262201-B-2026","title":"CG-BOARD-CLASS-12-PHYSICS-S-262201-B-2026","display_title":"Physics 2026 (Set B) - S 262201 B 2026","subject":"Physics","category":"Final Board Papers","year":"2026","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-b-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-b-2026.pdf","pdf_filename":"cg-board-class-12-physics-s-262201-b-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-S-262201-C-2026","title":"CG-BOARD-CLASS-12-PHYSICS-S-262201-C-2026","display_title":"Physics 2026 (Set C) - S 262201 C 2026","subject":"Physics","category":"Final Board Papers","year":"2026","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-c-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-s-262201-c-2026.pdf","pdf_filename":"cg-board-class-12-physics-s-262201-c-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-A-2025","title":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-A-2025","display_title":"Biology 2025 (Set A) - I252203 803 A 2025","subject":"Biology","category":"Final Board Papers","year":"2025","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-a-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-a-2025.pdf","pdf_filename":"cg-board-class-12-biology-i252203-803-a-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-B-2025","title":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-B-2025","display_title":"Biology 2025 (Set B) - I252203 803 B 2025","subject":"Biology","category":"Final Board Papers","year":"2025","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-b-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-b-2025.pdf","pdf_filename":"cg-board-class-12-biology-i252203-803-b-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-C-2025","title":"CG-BOARD-CLASS-12-BIOLOGY-I252203-803-C-2025","display_title":"Biology 2025 (Set C) - I252203 803 C 2025","subject":"Biology","category":"Final Board Papers","year":"2025","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-c-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-i252203-803-c-2025.pdf","pdf_filename":"cg-board-class-12-biology-i252203-803-c-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-A-2025","title":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-A-2025","display_title":"Chemistry 2025 (Set A) - I252202 A 2025","subject":"Chemistry","category":"Final Board Papers","year":"2025","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-a-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-a-2025.pdf","pdf_filename":"cg-board-class-12-chemistry-i252202-a-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-B-2025","title":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-B-2025","display_title":"Chemistry 2025 (Set B) - I252202 B 2025","subject":"Chemistry","category":"Final Board Papers","year":"2025","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-b-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-b-2025.pdf","pdf_filename":"cg-board-class-12-chemistry-i252202-b-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-C-2025","title":"CG-BOARD-CLASS-12-CHEMISTRY-I252202-C-2025","display_title":"Chemistry 2025 (Set C) - I252202 C 2025","subject":"Chemistry","category":"Final Board Papers","year":"2025","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-c-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-i252202-c-2025.pdf","pdf_filename":"cg-board-class-12-chemistry-i252202-c-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-A-2025","title":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-A-2025","display_title":"English 2025 (Set A) - I252020 820 A 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-a-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-a-2025.pdf","pdf_filename":"cg-board-class-12-english-i252020-820-a-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-B-2025","title":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-B-2025","display_title":"English 2025 (Set B) - I252020 820 B 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-b-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-b-2025.pdf","pdf_filename":"cg-board-class-12-english-i252020-820-b-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-C-2025","title":"CG-BOARD-CLASS-12-ENGLISH-I252020-820-C-2025","display_title":"English 2025 (Set C) - I252020 820 C 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-c-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-i252020-820-c-2025.pdf","pdf_filename":"cg-board-class-12-english-i252020-820-c-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-I252010-810-A-2025","title":"CG-BOARD-CLASS-12-HINDI-I252010-810-A-2025","display_title":"Hindi 2025 (Set A) - I252010 810 A 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-a-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-a-2025.pdf","pdf_filename":"cg-board-class-12-hindi-i252010-810-a-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-I252010-810-B-2025","title":"CG-BOARD-CLASS-12-HINDI-I252010-810-B-2025","display_title":"Hindi 2025 (Set B) - I252010 810 B 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-b-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-b-2025.pdf","pdf_filename":"cg-board-class-12-hindi-i252010-810-b-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-I252010-810-C-2025","title":"CG-BOARD-CLASS-12-HINDI-I252010-810-C-2025","display_title":"Hindi 2025 (Set C) - I252010 810 C 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-c-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-i252010-810-c-2025.pdf","pdf_filename":"cg-board-class-12-hindi-i252010-810-c-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-I252201-A-2025","title":"CG-BOARD-CLASS-12-PHYSICS-I252201-A-2025","display_title":"Physics 2025 (Set A) - I252201 A 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-a-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-a-2025.pdf","pdf_filename":"cg-board-class-12-physics-i252201-a-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-I252201-B-2025","title":"CG-BOARD-CLASS-12-PHYSICS-I252201-B-2025","display_title":"Physics 2025 (Set B) - I252201 B 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-b-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-b-2025.pdf","pdf_filename":"cg-board-class-12-physics-i252201-b-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-I252201-C-2025","title":"CG-BOARD-CLASS-12-PHYSICS-I252201-C-2025","display_title":"Physics 2025 (Set C) - I252201 C 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-c-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-i252201-c-2025.pdf","pdf_filename":"cg-board-class-12-physics-i252201-c-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-A-2024","title":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-A-2024","display_title":"Biology 2024 (Set A) - L 242203 803 A 2024","subject":"Biology","category":"Final Board Papers","year":"2024","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-a-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-a-2024.pdf","pdf_filename":"cg-board-class-12-biology-l-242203-803-a-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-B-2024","title":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-B-2024","display_title":"Biology 2024 (Set B) - L 242203 803 B 2024","subject":"Biology","category":"Final Board Papers","year":"2024","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-b-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-b-2024.pdf","pdf_filename":"cg-board-class-12-biology-l-242203-803-b-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-C-2024","title":"CG-BOARD-CLASS-12-BIOLOGY-L-242203-803-C-2024","display_title":"Biology 2024 (Set C) - L 242203 803 C 2024","subject":"Biology","category":"Final Board Papers","year":"2024","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-c-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-l-242203-803-c-2024.pdf","pdf_filename":"cg-board-class-12-biology-l-242203-803-c-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-A-2024","title":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-A-2024","display_title":"Chemistry 2024 (Set A) - L 242202 A 2024","subject":"Chemistry","category":"Final Board Papers","year":"2024","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-a-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-a-2024.pdf","pdf_filename":"cg-board-class-12-chemistry-l-242202-a-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-B-2024","title":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-B-2024","display_title":"Chemistry 2024 (Set B) - L 242202 B 2024","subject":"Chemistry","category":"Final Board Papers","year":"2024","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-b-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-b-2024.pdf","pdf_filename":"cg-board-class-12-chemistry-l-242202-b-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-C-2024","title":"CG-BOARD-CLASS-12-CHEMISTRY-L-242202-C-2024","display_title":"Chemistry 2024 (Set C) - L 242202 C 2024","subject":"Chemistry","category":"Final Board Papers","year":"2024","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-c-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-l-242202-c-2024.pdf","pdf_filename":"cg-board-class-12-chemistry-l-242202-c-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-A-2024","title":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-A-2024","display_title":"English 2024 (Set A) - L 242020 820 A 2024","subject":"English","category":"Final Board Papers","year":"2024","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-a-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-a-2024.pdf","pdf_filename":"cg-board-class-12-english-l-242020-820-a-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-B-2024","title":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-B-2024","display_title":"English 2024 (Set B) - L 242020 820 B 2024","subject":"English","category":"Final Board Papers","year":"2024","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-b-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-b-2024.pdf","pdf_filename":"cg-board-class-12-english-l-242020-820-b-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-C-2024","title":"CG-BOARD-CLASS-12-ENGLISH-L-242020-820-C-2024","display_title":"English 2024 (Set C) - L 242020 820 C 2024","subject":"English","category":"Final Board Papers","year":"2024","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-c-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-l-242020-820-c-2024.pdf","pdf_filename":"cg-board-class-12-english-l-242020-820-c-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-L-242010-810-A-2024","title":"CG-BOARD-CLASS-12-HINDI-L-242010-810-A-2024","display_title":"Hindi 2024 (Set A) - L 242010 810 A 2024","subject":"Hindi","category":"Final Board Papers","year":"2024","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-a-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-a-2024.pdf","pdf_filename":"cg-board-class-12-hindi-l-242010-810-a-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-L-242010-810-B-2024","title":"CG-BOARD-CLASS-12-HINDI-L-242010-810-B-2024","display_title":"Hindi 2024 (Set B) - L 242010 810 B 2024","subject":"Hindi","category":"Final Board Papers","year":"2024","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-b-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-b-2024.pdf","pdf_filename":"cg-board-class-12-hindi-l-242010-810-b-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-L-242010-810-C-2024","title":"CG-BOARD-CLASS-12-HINDI-L-242010-810-C-2024","display_title":"Hindi 2024 (Set C) - L 242010 810 C 2024","subject":"Hindi","category":"Final Board Papers","year":"2024","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-c-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-l-242010-810-c-2024.pdf","pdf_filename":"cg-board-class-12-hindi-l-242010-810-c-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-L-242201-A-2024","title":"CG-BOARD-CLASS-12-PHYSICS-L-242201-A-2024","display_title":"Physics 2024 (Set A) - L 242201 A 2024","subject":"Physics","category":"Final Board Papers","year":"2024","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-a-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-a-2024.pdf","pdf_filename":"cg-board-class-12-physics-l-242201-a-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-L-242201-B-2024","title":"CG-BOARD-CLASS-12-PHYSICS-L-242201-B-2024","display_title":"Physics 2024 (Set B) - L 242201 B 2024","subject":"Physics","category":"Final Board Papers","year":"2024","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-b-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-b-2024.pdf","pdf_filename":"cg-board-class-12-physics-l-242201-b-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-L-242201-C-2024","title":"CG-BOARD-CLASS-12-PHYSICS-L-242201-C-2024","display_title":"Physics 2024 (Set C) - L 242201 C 2024","subject":"Physics","category":"Final Board Papers","year":"2024","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-c-2024.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-l-242201-c-2024.pdf","pdf_filename":"cg-board-class-12-physics-l-242201-c-2024.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-A-2023","title":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-A-2023","display_title":"Biology 2023 (Set A) - C 232203 803 A 2023","subject":"Biology","category":"Final Board Papers","year":"2023","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-a-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-a-2023.pdf","pdf_filename":"cg-board-class-12-biology-c-232203-803-a-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-B-2023","title":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-B-2023","display_title":"Biology 2023 (Set B) - C 232203 803 B 2023","subject":"Biology","category":"Final Board Papers","year":"2023","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-b-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-b-2023.pdf","pdf_filename":"cg-board-class-12-biology-c-232203-803-b-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-C-2023","title":"CG-BOARD-CLASS-12-BIOLOGY-C-232203-803-C-2023","display_title":"Biology 2023 (Set C) - C 232203 803 C 2023","subject":"Biology","category":"Final Board Papers","year":"2023","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-c-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-c-232203-803-c-2023.pdf","pdf_filename":"cg-board-class-12-biology-c-232203-803-c-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-C-232202-A-2023","title":"CG-BOARD-CLASS-12-CHEMISTRY-C-232202-A-2023","display_title":"Chemistry 2023 (Set A) - C 232202 A 2023","subject":"Chemistry","category":"Final Board Papers","year":"2023","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-c-232202-a-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-c-232202-a-2023.pdf","pdf_filename":"cg-board-class-12-chemistry-c-232202-a-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-C-232202-B-2023","title":"CG-BOARD-CLASS-12-CHEMISTRY-C-232202-B-2023","display_title":"Chemistry 2023 (Set B) - C 232202 B 2023","subject":"Chemistry","category":"Final Board Papers","year":"2023","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-c-232202-b-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-c-232202-b-2023.pdf","pdf_filename":"cg-board-class-12-chemistry-c-232202-b-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-C-232020-A-2023","title":"CG-BOARD-CLASS-12-ENGLISH-C-232020-A-2023","display_title":"English 2023 (Set A) - C 232020 A 2023","subject":"English","category":"Final Board Papers","year":"2023","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-a-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-a-2023.pdf","pdf_filename":"cg-board-class-12-english-c-232020-a-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-C-232020-B-2023","title":"CG-BOARD-CLASS-12-ENGLISH-C-232020-B-2023","display_title":"English 2023 (Set B) - C 232020 B 2023","subject":"English","category":"Final Board Papers","year":"2023","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-b-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-b-2023.pdf","pdf_filename":"cg-board-class-12-english-c-232020-b-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-C-232020-C-2023","title":"CG-BOARD-CLASS-12-ENGLISH-C-232020-C-2023","display_title":"English 2023 (Set C) - C 232020 C 2023","subject":"English","category":"Final Board Papers","year":"2023","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-c-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-c-232020-c-2023.pdf","pdf_filename":"cg-board-class-12-english-c-232020-c-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-C-232010-A-2023","title":"CG-BOARD-CLASS-12-HINDI-C-232010-A-2023","display_title":"Hindi 2023 (Set A) - C 232010 A 2023","subject":"Hindi","category":"Final Board Papers","year":"2023","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-a-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-a-2023.pdf","pdf_filename":"cg-board-class-12-hindi-c-232010-a-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-C-232010-B-2023","title":"CG-BOARD-CLASS-12-HINDI-C-232010-B-2023","display_title":"Hindi 2023 (Set B) - C 232010 B 2023","subject":"Hindi","category":"Final Board Papers","year":"2023","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-b-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-b-2023.pdf","pdf_filename":"cg-board-class-12-hindi-c-232010-b-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-C-232010-C-2023","title":"CG-BOARD-CLASS-12-HINDI-C-232010-C-2023","display_title":"Hindi 2023 (Set C) - C 232010 C 2023","subject":"Hindi","category":"Final Board Papers","year":"2023","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-c-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-c-232010-c-2023.pdf","pdf_filename":"cg-board-class-12-hindi-c-232010-c-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-C-232201-A-2023","title":"CG-BOARD-CLASS-12-PHYSICS-C-232201-A-2023","display_title":"Physics 2023 (Set A) - C 232201 A 2023","subject":"Physics","category":"Final Board Papers","year":"2023","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-a-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-a-2023.pdf","pdf_filename":"cg-board-class-12-physics-c-232201-a-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-C-232201-B-2023","title":"CG-BOARD-CLASS-12-PHYSICS-C-232201-B-2023","display_title":"Physics 2023 (Set B) - C 232201 B 2023","subject":"Physics","category":"Final Board Papers","year":"2023","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-b-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-b-2023.pdf","pdf_filename":"cg-board-class-12-physics-c-232201-b-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-C-232201-C-2023","title":"CG-BOARD-CLASS-12-PHYSICS-C-232201-C-2023","display_title":"Physics 2023 (Set C) - C 232201 C 2023","subject":"Physics","category":"Final Board Papers","year":"2023","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-c-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-c-232201-c-2023.pdf","pdf_filename":"cg-board-class-12-physics-c-232201-c-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-STENO-TYPING-HINDI-ENGLISH-C-232164-2023","title":"CG-BOARD-CLASS-12-STENO-TYPING-HINDI-ENGLISH-C-232164-2023","display_title":"Hindi 2023 (Set C) - STENO TYPING ENGLISH C 232164 2023","subject":"Hindi","category":"Final Board Papers","year":"2023","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-steno-typing-hindi-english-c-232164-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-steno-typing-hindi-english-c-232164-2023.pdf","pdf_filename":"cg-board-class-12-steno-typing-hindi-english-c-232164-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-T-222203-803-A-2022","title":"CG-BOARD-CLASS-12-BIOLOGY-T-222203-803-A-2022","display_title":"Biology 2022 (Set A) - T 222203 803 A 2022","subject":"Biology","category":"Final Board Papers","year":"2022","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-t-222203-803-a-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-t-222203-803-a-2022.pdf","pdf_filename":"cg-board-class-12-biology-t-222203-803-a-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-T-222203-803-C-2022","title":"CG-BOARD-CLASS-12-BIOLOGY-T-222203-803-C-2022","display_title":"Biology 2022 (Set C) - T 222203 803 C 2022","subject":"Biology","category":"Final Board Papers","year":"2022","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-t-222203-803-c-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-t-222203-803-c-2022.pdf","pdf_filename":"cg-board-class-12-biology-t-222203-803-c-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-A-2022","title":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-A-2022","display_title":"Chemistry 2022 (Set A) - T 222202 A 2022","subject":"Chemistry","category":"Final Board Papers","year":"2022","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-a-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-a-2022.pdf","pdf_filename":"cg-board-class-12-chemistry-t-222202-a-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-B-2022","title":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-B-2022","display_title":"Chemistry 2022 (Set B) - T 222202 B 2022","subject":"Chemistry","category":"Final Board Papers","year":"2022","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-b-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-b-2022.pdf","pdf_filename":"cg-board-class-12-chemistry-t-222202-b-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-C-2022","title":"CG-BOARD-CLASS-12-CHEMISTRY-T-222202-C-2022","display_title":"Chemistry 2022 (Set C) - T 222202 C 2022","subject":"Chemistry","category":"Final Board Papers","year":"2022","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-c-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-t-222202-c-2022.pdf","pdf_filename":"cg-board-class-12-chemistry-t-222202-c-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-T-222020-A-2022","title":"CG-BOARD-CLASS-12-ENGLISH-T-222020-A-2022","display_title":"English 2022 (Set A) - T 222020 A 2022","subject":"English","category":"Final Board Papers","year":"2022","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-a-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-a-2022.pdf","pdf_filename":"cg-board-class-12-english-t-222020-a-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-T-222020-B-2022","title":"CG-BOARD-CLASS-12-ENGLISH-T-222020-B-2022","display_title":"English 2022 (Set B) - T 222020 B 2022","subject":"English","category":"Final Board Papers","year":"2022","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-b-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-b-2022.pdf","pdf_filename":"cg-board-class-12-english-t-222020-b-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-T-222020-C-2022","title":"CG-BOARD-CLASS-12-ENGLISH-T-222020-C-2022","display_title":"English 2022 (Set C) - T 222020 C 2022","subject":"English","category":"Final Board Papers","year":"2022","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-c-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-t-222020-c-2022.pdf","pdf_filename":"cg-board-class-12-english-t-222020-c-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-222010-A-2022","title":"CG-BOARD-CLASS-12-HINDI-T-222010-A-2022","display_title":"Hindi 2022 (Set A) - T 222010 A 2022","subject":"Hindi","category":"Final Board Papers","year":"2022","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-a-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-a-2022.pdf","pdf_filename":"cg-board-class-12-hindi-t-222010-a-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-222010-B-2022","title":"CG-BOARD-CLASS-12-HINDI-T-222010-B-2022","display_title":"Hindi 2022 (Set B) - T 222010 B 2022","subject":"Hindi","category":"Final Board Papers","year":"2022","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-b-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-b-2022.pdf","pdf_filename":"cg-board-class-12-hindi-t-222010-b-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-T-222010-C-2022","title":"CG-BOARD-CLASS-12-HINDI-T-222010-C-2022","display_title":"Hindi 2022 (Set C) - T 222010 C 2022","subject":"Hindi","category":"Final Board Papers","year":"2022","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-c-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-t-222010-c-2022.pdf","pdf_filename":"cg-board-class-12-hindi-t-222010-c-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-T-222201-A-2022","title":"CG-BOARD-CLASS-12-PHYSICS-T-222201-A-2022","display_title":"Physics 2022 (Set A) - T 222201 A 2022","subject":"Physics","category":"Final Board Papers","year":"2022","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-a-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-a-2022.pdf","pdf_filename":"cg-board-class-12-physics-t-222201-a-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-T-222201-B-2022","title":"CG-BOARD-CLASS-12-PHYSICS-T-222201-B-2022","display_title":"Physics 2022 (Set B) - T 222201 B 2022","subject":"Physics","category":"Final Board Papers","year":"2022","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-b-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-b-2022.pdf","pdf_filename":"cg-board-class-12-physics-t-222201-b-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-T-222201-C-2022","title":"CG-BOARD-CLASS-12-PHYSICS-T-222201-C-2022","display_title":"Physics 2022 (Set C) - T 222201 C 2022","subject":"Physics","category":"Final Board Papers","year":"2022","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-c-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-t-222201-c-2022.pdf","pdf_filename":"cg-board-class-12-physics-t-222201-c-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-A-2021","title":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-A-2021","display_title":"Biology 2021 (Set A) - O 212203 803 A 2021","subject":"Biology","category":"Final Board Papers","year":"2021","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-a-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-a-2021.pdf","pdf_filename":"cg-board-class-12-biology-o-212203-803-a-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-B-2021","title":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-B-2021","display_title":"Biology 2021 (Set B) - O 212203 803 B 2021","subject":"Biology","category":"Final Board Papers","year":"2021","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-b-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-b-2021.pdf","pdf_filename":"cg-board-class-12-biology-o-212203-803-b-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-C-2021","title":"CG-BOARD-CLASS-12-BIOLOGY-O-212203-803-C-2021","display_title":"Biology 2021 (Set C) - O 212203 803 C 2021","subject":"Biology","category":"Final Board Papers","year":"2021","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-c-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-o-212203-803-c-2021.pdf","pdf_filename":"cg-board-class-12-biology-o-212203-803-c-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-A-2021","title":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-A-2021","display_title":"Chemistry 2021 (Set A) - O 212202 A 2021","subject":"Chemistry","category":"Final Board Papers","year":"2021","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-a-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-a-2021.pdf","pdf_filename":"cg-board-class-12-chemistry-o-212202-a-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-B-2021","title":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-B-2021","display_title":"Chemistry 2021 (Set B) - O 212202 B 2021","subject":"Chemistry","category":"Final Board Papers","year":"2021","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-b-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-b-2021.pdf","pdf_filename":"cg-board-class-12-chemistry-o-212202-b-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-C-2021","title":"CG-BOARD-CLASS-12-CHEMISTRY-O-212202-C-2021","display_title":"Chemistry 2021 (Set C) - O 212202 C 2021","subject":"Chemistry","category":"Final Board Papers","year":"2021","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-c-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-o-212202-c-2021.pdf","pdf_filename":"cg-board-class-12-chemistry-o-212202-c-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-O-212020-A-2021","title":"CG-BOARD-CLASS-12-ENGLISH-O-212020-A-2021","display_title":"English 2021 (Set A) - O 212020 A 2021","subject":"English","category":"Final Board Papers","year":"2021","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-a-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-a-2021.pdf","pdf_filename":"cg-board-class-12-english-o-212020-a-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-O-212020-B-2021","title":"CG-BOARD-CLASS-12-ENGLISH-O-212020-B-2021","display_title":"English 2021 (Set B) - O 212020 B 2021","subject":"English","category":"Final Board Papers","year":"2021","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-b-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-b-2021.pdf","pdf_filename":"cg-board-class-12-english-o-212020-b-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-O-212020-C-2021","title":"CG-BOARD-CLASS-12-ENGLISH-O-212020-C-2021","display_title":"English 2021 (Set C) - O 212020 C 2021","subject":"English","category":"Final Board Papers","year":"2021","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-c-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-o-212020-c-2021.pdf","pdf_filename":"cg-board-class-12-english-o-212020-c-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-O-212010-A-2021","title":"CG-BOARD-CLASS-12-HINDI-O-212010-A-2021","display_title":"Hindi 2021 (Set A) - O 212010 A 2021","subject":"Hindi","category":"Final Board Papers","year":"2021","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-a-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-a-2021.pdf","pdf_filename":"cg-board-class-12-hindi-o-212010-a-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-O-212010-B-2021","title":"CG-BOARD-CLASS-12-HINDI-O-212010-B-2021","display_title":"Hindi 2021 (Set B) - O 212010 B 2021","subject":"Hindi","category":"Final Board Papers","year":"2021","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-b-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-b-2021.pdf","pdf_filename":"cg-board-class-12-hindi-o-212010-b-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-O-212010-C-2021","title":"CG-BOARD-CLASS-12-HINDI-O-212010-C-2021","display_title":"Hindi 2021 (Set C) - O 212010 C 2021","subject":"Hindi","category":"Final Board Papers","year":"2021","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-c-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-o-212010-c-2021.pdf","pdf_filename":"cg-board-class-12-hindi-o-212010-c-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-O-212201-A-2021","title":"CG-BOARD-CLASS-12-PHYSICS-O-212201-A-2021","display_title":"Physics 2021 (Set A) - O 212201 A 2021","subject":"Physics","category":"Final Board Papers","year":"2021","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-a-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-a-2021.pdf","pdf_filename":"cg-board-class-12-physics-o-212201-a-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-O-212201-B-2021","title":"CG-BOARD-CLASS-12-PHYSICS-O-212201-B-2021","display_title":"Physics 2021 (Set B) - O 212201 B 2021","subject":"Physics","category":"Final Board Papers","year":"2021","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-b-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-b-2021.pdf","pdf_filename":"cg-board-class-12-physics-o-212201-b-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-O-212201-C-2021","title":"CG-BOARD-CLASS-12-PHYSICS-O-212201-C-2021","display_title":"Physics 2021 (Set C) - O 212201 C 2021","subject":"Physics","category":"Final Board Papers","year":"2021","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-c-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-o-212201-c-2021.pdf","pdf_filename":"cg-board-class-12-physics-o-212201-c-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-2020","title":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-2020","display_title":"Biology 2020 (Main Paper) - K 202203 2020","subject":"Biology","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-2020.pdf","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-2020.pdf","pdf_filename":"cg-board-class-12-biology-k-202203-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-803-A-2020","title":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-803-A-2020","display_title":"Biology 2020 (Set A) - K 202203 803 A 2020","subject":"Biology","category":"Final Board Papers","year":"2020","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-803-a-2020.pdf","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-803-a-2020.pdf","pdf_filename":"cg-board-class-12-biology-k-202203-803-a-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-803-B-2020","title":"CG-BOARD-CLASS-12-BIOLOGY-K-202203-803-B-2020","display_title":"Biology 2020 (Set B) - K 202203 803 B 2020","subject":"Biology","category":"Final Board Papers","year":"2020","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-803-b-2020.pdf","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-k-202203-803-b-2020.pdf","pdf_filename":"cg-board-class-12-biology-k-202203-803-b-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-A-2020","title":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-A-2020","display_title":"Chemistry 2020 (Set A) - K 202202 A 2020","subject":"Chemistry","category":"Final Board Papers","year":"2020","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-a-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-a-2020.pdf","pdf_filename":"cg-board-class-12-chemistry-k-202202-a-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-B-2020","title":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-B-2020","display_title":"Chemistry 2020 (Set B) - K 202202 B 2020","subject":"Chemistry","category":"Final Board Papers","year":"2020","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-b-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-b-2020.pdf","pdf_filename":"cg-board-class-12-chemistry-k-202202-b-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-C-2020","title":"CG-BOARD-CLASS-12-CHEMISTRY-K-202202-C-2020","display_title":"Chemistry 2020 (Set C) - K 202202 C 2020","subject":"Chemistry","category":"Final Board Papers","year":"2020","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-c-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-k-202202-c-2020.pdf","pdf_filename":"cg-board-class-12-chemistry-k-202202-c-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-K-202020-A-2020","title":"CG-BOARD-CLASS-12-ENGLISH-K-202020-A-2020","display_title":"English 2020 (Set A) - K 202020 A 2020","subject":"English","category":"Final Board Papers","year":"2020","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-a-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-a-2020.pdf","pdf_filename":"cg-board-class-12-english-k-202020-a-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-K-202020-B-2020","title":"CG-BOARD-CLASS-12-ENGLISH-K-202020-B-2020","display_title":"English 2020 (Set B) - K 202020 B 2020","subject":"English","category":"Final Board Papers","year":"2020","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-b-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-b-2020.pdf","pdf_filename":"cg-board-class-12-english-k-202020-b-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-K-202020-C-2020","title":"CG-BOARD-CLASS-12-ENGLISH-K-202020-C-2020","display_title":"English 2020 (Set C) - K 202020 C 2020","subject":"English","category":"Final Board Papers","year":"2020","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-c-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-k-202020-c-2020.pdf","pdf_filename":"cg-board-class-12-english-k-202020-c-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-K-202010-A-2020","title":"CG-BOARD-CLASS-12-HINDI-K-202010-A-2020","display_title":"Hindi 2020 (Set A) - K 202010 A 2020","subject":"Hindi","category":"Final Board Papers","year":"2020","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-a-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-a-2020.pdf","pdf_filename":"cg-board-class-12-hindi-k-202010-a-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-K-202010-B-2020","title":"CG-BOARD-CLASS-12-HINDI-K-202010-B-2020","display_title":"Hindi 2020 (Set B) - K 202010 B 2020","subject":"Hindi","category":"Final Board Papers","year":"2020","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-b-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-b-2020.pdf","pdf_filename":"cg-board-class-12-hindi-k-202010-b-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-K-202010-C-2020","title":"CG-BOARD-CLASS-12-HINDI-K-202010-C-2020","display_title":"Hindi 2020 (Set C) - K 202010 C 2020","subject":"Hindi","category":"Final Board Papers","year":"2020","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-c-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-k-202010-c-2020.pdf","pdf_filename":"cg-board-class-12-hindi-k-202010-c-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-K-202201-A-2020","title":"CG-BOARD-CLASS-12-PHYSICS-K-202201-A-2020","display_title":"Physics 2020 (Set A) - K 202201 A 2020","subject":"Physics","category":"Final Board Papers","year":"2020","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-a-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-a-2020.pdf","pdf_filename":"cg-board-class-12-physics-k-202201-a-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-K-202201-B-2020","title":"CG-BOARD-CLASS-12-PHYSICS-K-202201-B-2020","display_title":"Physics 2020 (Set B) - K 202201 B 2020","subject":"Physics","category":"Final Board Papers","year":"2020","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-b-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-b-2020.pdf","pdf_filename":"cg-board-class-12-physics-k-202201-b-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-K-202201-C-2020","title":"CG-BOARD-CLASS-12-PHYSICS-K-202201-C-2020","display_title":"Physics 2020 (Set C) - K 202201 C 2020","subject":"Physics","category":"Final Board Papers","year":"2020","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-c-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-k-202201-c-2020.pdf","pdf_filename":"cg-board-class-12-physics-k-202201-c-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-E-192231-A-2019","title":"CG-BOARD-CLASS-12-BIOLOGY-E-192231-A-2019","display_title":"Biology 2019 (Set A) - E 192231 A 2019","subject":"Biology","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-e-192231-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-e-192231-a-2019.pdf","pdf_filename":"cg-board-class-12-biology-e-192231-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-E-192202-B-2019","title":"CG-BOARD-CLASS-12-CHEMISTRY-E-192202-B-2019","display_title":"Chemistry 2019 (Set B) - E 192202 B 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-e-192202-b-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-e-192202-b-2019.pdf","pdf_filename":"cg-board-class-12-chemistry-e-192202-b-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-E-192220-A-2019","title":"CG-BOARD-CLASS-12-CHEMISTRY-E-192220-A-2019","display_title":"Chemistry 2019 (Set A) - E 192220 A 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-e-192220-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-e-192220-a-2019.pdf","pdf_filename":"cg-board-class-12-chemistry-e-192220-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-E-192052-A-2019","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-E-192052-A-2019","display_title":"English 2019 (Set A) - GENERAL E 192052 A 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-e-192052-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-e-192052-a-2019.pdf","pdf_filename":"cg-board-class-12-english-general-e-192052-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-SPECIAL-E-192002-A-2019","title":"CG-BOARD-CLASS-12-ENGLISH-SPECIAL-E-192002-A-2019","display_title":"English 2019 (Set A) - SPECIAL E 192002 A 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-special-e-192002-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-special-e-192002-a-2019.pdf","pdf_filename":"cg-board-class-12-english-special-e-192002-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-E-192001-A-2019","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-E-192001-A-2019","display_title":"Hindi 2019 (Set A) - SPECIAL E 192001 A 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-e-192001-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-e-192001-a-2019.pdf","pdf_filename":"cg-board-class-12-hindi-special-e-192001-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-E-192001-B-2019","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-E-192001-B-2019","display_title":"Hindi 2019 (Set B) - SPECIAL E 192001 B 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-e-192001-b-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-e-192001-b-2019.pdf","pdf_filename":"cg-board-class-12-hindi-special-e-192001-b-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-E-192201-A-2019","title":"CG-BOARD-CLASS-12-PHYSICS-E-192201-A-2019","display_title":"Physics 2019 (Set A) - E 192201 A 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192201-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192201-a-2019.pdf","pdf_filename":"cg-board-class-12-physics-e-192201-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-E-192201-C-2019","title":"CG-BOARD-CLASS-12-PHYSICS-E-192201-C-2019","display_title":"Physics 2019 (Set C) - E 192201 C 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192201-c-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192201-c-2019.pdf","pdf_filename":"cg-board-class-12-physics-e-192201-c-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-E-192210-A-2019","title":"CG-BOARD-CLASS-12-PHYSICS-E-192210-A-2019","display_title":"Physics 2019 (Set A) - E 192210 A 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192210-a-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-e-192210-a-2019.pdf","pdf_filename":"cg-board-class-12-physics-e-192210-a-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-Y-182231-B-2018","title":"CG-BOARD-CLASS-12-BIOLOGY-Y-182231-B-2018","display_title":"Biology 2018 (Set B) - Y 182231 B 2018","subject":"Biology","category":"Final Board Papers","year":"2018","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-y-182231-b-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-y-182231-b-2018.pdf","pdf_filename":"cg-board-class-12-biology-y-182231-b-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-Y-182220-A-2018","title":"CG-BOARD-CLASS-12-CHEMISTRY-Y-182220-A-2018","display_title":"Chemistry 2018 (Set A) - Y 182220 A 2018","subject":"Chemistry","category":"Final Board Papers","year":"2018","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-y-182220-a-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-y-182220-a-2018.pdf","pdf_filename":"cg-board-class-12-chemistry-y-182220-a-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-Y-182220-B-2018","title":"CG-BOARD-CLASS-12-CHEMISTRY-Y-182220-B-2018","display_title":"Chemistry 2018 (Set B) - Y 182220 B 2018","subject":"Chemistry","category":"Final Board Papers","year":"2018","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-y-182220-b-2018.pdf","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-y-182220-b-2018.pdf","pdf_filename":"cg-board-class-12-chemistry-y-182220-b-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-Y-182052-B-2018","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-Y-182052-B-2018","display_title":"English 2018 (Set B) - GENERAL Y 182052 B 2018","subject":"English","category":"Final Board Papers","year":"2018","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-y-182052-b-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-y-182052-b-2018.pdf","pdf_filename":"cg-board-class-12-english-general-y-182052-b-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-Y-182001-B-2018","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-Y-182001-B-2018","display_title":"Hindi 2018 (Set B) - SPECIAL Y 182001 B 2018","subject":"Hindi","category":"Final Board Papers","year":"2018","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-y-182001-b-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-y-182001-b-2018.pdf","pdf_filename":"cg-board-class-12-hindi-special-y-182001-b-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-Y-182001-C-2018","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-Y-182001-C-2018","display_title":"Hindi 2018 (Set C) - SPECIAL Y 182001 C 2018","subject":"Hindi","category":"Final Board Papers","year":"2018","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-y-182001-c-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-y-182001-c-2018.pdf","pdf_filename":"cg-board-class-12-hindi-special-y-182001-c-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-Y-182210-A-2018","title":"CG-BOARD-CLASS-12-PHYSICS-Y-182210-A-2018","display_title":"Physics 2018 (Set A) - Y 182210 A 2018","subject":"Physics","category":"Final Board Papers","year":"2018","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-y-182210-a-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-y-182210-a-2018.pdf","pdf_filename":"cg-board-class-12-physics-y-182210-a-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-SET-A-2017","title":"CG-BOARD-CLASS-12-BIOLOGY-SET-A-2017","display_title":"Biology 2017 (Set A) - SET A 2017","subject":"Biology","category":"Final Board Papers","year":"2017","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-a-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-a-2017.pdf","pdf_filename":"cg-board-class-12-biology-set-a-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-SET-B-2017","title":"CG-BOARD-CLASS-12-BIOLOGY-SET-B-2017","display_title":"Biology 2017 (Set B) - SET B 2017","subject":"Biology","category":"Final Board Papers","year":"2017","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-b-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-b-2017.pdf","pdf_filename":"cg-board-class-12-biology-set-b-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BIOLOGY-SET-C-2017","title":"CG-BOARD-CLASS-12-BIOLOGY-SET-C-2017","display_title":"Biology 2017 (Set C) - SET C 2017","subject":"Biology","category":"Final Board Papers","year":"2017","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-c-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-biology-set-c-2017.pdf","pdf_filename":"cg-board-class-12-biology-set-c-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-SET-A-2017","title":"CG-BOARD-CLASS-12-CHEMISTRY-SET-A-2017","display_title":"Chemistry 2017 (Set A) - SET A 2017","subject":"Chemistry","category":"Final Board Papers","year":"2017","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-a-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-a-2017.pdf","pdf_filename":"cg-board-class-12-chemistry-set-a-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-SET-B-2017","title":"CG-BOARD-CLASS-12-CHEMISTRY-SET-B-2017","display_title":"Chemistry 2017 (Set B) - SET B 2017","subject":"Chemistry","category":"Final Board Papers","year":"2017","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-b-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-b-2017.pdf","pdf_filename":"cg-board-class-12-chemistry-set-b-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-CHEMISTRY-SET-C-2017","title":"CG-BOARD-CLASS-12-CHEMISTRY-SET-C-2017","display_title":"Chemistry 2017 (Set C) - SET C 2017","subject":"Chemistry","category":"Final Board Papers","year":"2017","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-c-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-chemistry-set-c-2017.pdf","pdf_filename":"cg-board-class-12-chemistry-set-c-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-L-172052-C-2017","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-L-172052-C-2017","display_title":"English 2017 (Set C) - GENERAL L 172052 C 2017","subject":"English","category":"Final Board Papers","year":"2017","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-l-172052-c-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-l-172052-c-2017.pdf","pdf_filename":"cg-board-class-12-english-general-l-172052-c-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2017","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2017","display_title":"English 2017 (Set A) - GENERAL SET A 2017","subject":"English","category":"Final Board Papers","year":"2017","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2017.pdf","pdf_filename":"cg-board-class-12-english-general-set-a-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2017","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2017","display_title":"English 2017 (Set B) - GENERAL SET B 2017","subject":"English","category":"Final Board Papers","year":"2017","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2017.pdf","pdf_filename":"cg-board-class-12-english-general-set-b-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2017","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2017","display_title":"Hindi 2017 (Set A) - SPECIAL SET A 2017","subject":"Hindi","category":"Final Board Papers","year":"2017","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2017.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-a-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2017","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2017","display_title":"Hindi 2017 (Set B) - SPECIAL SET B 2017","subject":"Hindi","category":"Final Board Papers","year":"2017","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2017.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-b-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2017","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2017","display_title":"Hindi 2017 (Set C) - SPECIAL SET C 2017","subject":"Hindi","category":"Final Board Papers","year":"2017","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2017.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-c-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-SET-A-2017","title":"CG-BOARD-CLASS-12-PHYSICS-SET-A-2017","display_title":"Physics 2017 (Set A) - SET A 2017","subject":"Physics","category":"Final Board Papers","year":"2017","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-a-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-a-2017.pdf","pdf_filename":"cg-board-class-12-physics-set-a-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-SET-B-2017","title":"CG-BOARD-CLASS-12-PHYSICS-SET-B-2017","display_title":"Physics 2017 (Set B) - SET B 2017","subject":"Physics","category":"Final Board Papers","year":"2017","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-b-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-b-2017.pdf","pdf_filename":"cg-board-class-12-physics-set-b-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PHYSICS-SET-C-2017","title":"CG-BOARD-CLASS-12-PHYSICS-SET-C-2017","display_title":"Physics 2017 (Set C) - SET C 2017","subject":"Physics","category":"Final Board Papers","year":"2017","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-c-2017.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-physics-set-c-2017.pdf","pdf_filename":"cg-board-class-12-physics-set-c-2017.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2016","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2016","display_title":"English 2016 (Set A) - GENERAL SET A 2016","subject":"English","category":"Final Board Papers","year":"2016","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2016.pdf","pdf_filename":"cg-board-class-12-english-general-set-a-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2016","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2016","display_title":"English 2016 (Set B) - GENERAL SET B 2016","subject":"English","category":"Final Board Papers","year":"2016","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2016.pdf","pdf_filename":"cg-board-class-12-english-general-set-b-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-C-2016","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-C-2016","display_title":"English 2016 (Set C) - GENERAL SET C 2016","subject":"English","category":"Final Board Papers","year":"2016","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-c-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-c-2016.pdf","pdf_filename":"cg-board-class-12-english-general-set-c-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2016","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2016","display_title":"Hindi 2016 (Set A) - SPECIAL SET A 2016","subject":"Hindi","category":"Final Board Papers","year":"2016","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2016.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-a-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2016","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2016","display_title":"Hindi 2016 (Set B) - SPECIAL SET B 2016","subject":"Hindi","category":"Final Board Papers","year":"2016","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2016.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-b-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2016","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2016","display_title":"Hindi 2016 (Set C) - SPECIAL SET C 2016","subject":"Hindi","category":"Final Board Papers","year":"2016","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2016.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2016.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-c-2016.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-B-152052-2015","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-B-152052-2015","display_title":"English 2015 (Set B) - GENERAL B 152052 2015","subject":"English","category":"Final Board Papers","year":"2015","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-b-152052-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-b-152052-2015.pdf","pdf_filename":"cg-board-class-12-english-general-b-152052-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2015","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-A-2015","display_title":"English 2015 (Set A) - GENERAL SET A 2015","subject":"English","category":"Final Board Papers","year":"2015","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-a-2015.pdf","pdf_filename":"cg-board-class-12-english-general-set-a-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2015","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-B-2015","display_title":"English 2015 (Set B) - GENERAL SET B 2015","subject":"English","category":"Final Board Papers","year":"2015","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-b-2015.pdf","pdf_filename":"cg-board-class-12-english-general-set-b-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-C-2015","title":"CG-BOARD-CLASS-12-ENGLISH-GENERAL-SET-C-2015","display_title":"English 2015 (Set C) - GENERAL SET C 2015","subject":"English","category":"Final Board Papers","year":"2015","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-c-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-english-general-set-c-2015.pdf","pdf_filename":"cg-board-class-12-english-general-set-c-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2015","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-A-2015","display_title":"Hindi 2015 (Set A) - SPECIAL SET A 2015","subject":"Hindi","category":"Final Board Papers","year":"2015","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-a-2015.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-a-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2015","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-B-2015","display_title":"Hindi 2015 (Set B) - SPECIAL SET B 2015","subject":"Hindi","category":"Final Board Papers","year":"2015","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-b-2015.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-b-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2015","title":"CG-BOARD-CLASS-12-HINDI-SPECIAL-SET-C-2015","display_title":"Hindi 2015 (Set C) - SPECIAL SET C 2015","subject":"Hindi","category":"Final Board Papers","year":"2015","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2015.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hindi-special-set-c-2015.pdf","pdf_filename":"cg-board-class-12-hindi-special-set-c-2015.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BLUE-PRINT-BIOLOGY-203-2026","title":"CG-BOARD-CLASS-12-BLUE-PRINT-BIOLOGY-203-2026","display_title":"Biology 2026 (Main Paper) - BLUE PRINT 203 2026","subject":"Biology","category":"Final Board Papers","year":"2026","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-biology-203-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-biology-203-2026.pdf","pdf_filename":"cg-board-class-12-blue-print-biology-203-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BLUE-PRINT-CHEMISTRY-202-2026","title":"CG-BOARD-CLASS-12-BLUE-PRINT-CHEMISTRY-202-2026","display_title":"Chemistry 2026 (Main Paper) - BLUE PRINT 202 2026","subject":"Chemistry","category":"Final Board Papers","year":"2026","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-chemistry-202-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-chemistry-202-2026.pdf","pdf_filename":"cg-board-class-12-blue-print-chemistry-202-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BLUE-PRINT-ENGLISH-020-2026","title":"CG-BOARD-CLASS-12-BLUE-PRINT-ENGLISH-020-2026","display_title":"English 2026 (Main Paper) - BLUE PRINT 020 2026","subject":"English","category":"Final Board Papers","year":"2026","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-english-020-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-english-020-2026.pdf","pdf_filename":"cg-board-class-12-blue-print-english-020-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BLUE-PRINT-HINDI-010-2026","title":"CG-BOARD-CLASS-12-BLUE-PRINT-HINDI-010-2026","display_title":"Hindi 2026 (Main Paper) - BLUE PRINT 010 2026","subject":"Hindi","category":"Final Board Papers","year":"2026","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-hindi-010-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-hindi-010-2026.pdf","pdf_filename":"cg-board-class-12-blue-print-hindi-010-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BLUE-PRINT-PHYSICS-201-2026","title":"CG-BOARD-CLASS-12-BLUE-PRINT-PHYSICS-201-2026","display_title":"Physics 2026 (Main Paper) - BLUE PRINT 201 2026","subject":"Physics","category":"Final Board Papers","year":"2026","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-physics-201-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-blue-print-physics-201-2026.pdf","pdf_filename":"cg-board-class-12-blue-print-physics-201-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-203-2026","title":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-203-2026","display_title":"Biology 2026 (Model Paper) - MODEL PAPER 203 2026","subject":"Biology","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-203-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-203-2026.pdf","pdf_filename":"cg-board-class-12-model-paper-biology-203-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-202-2026","title":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-202-2026","display_title":"Chemistry 2026 (Model Paper) - MODEL PAPER 202 2026","subject":"Chemistry","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-202-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-202-2026.pdf","pdf_filename":"cg-board-class-12-model-paper-chemistry-202-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-ENGLISH-020-2026","title":"CG-BOARD-CLASS-12-MODEL-PAPER-ENGLISH-020-2026","display_title":"English 2026 (Model Paper) - MODEL PAPER 020 2026","subject":"English","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-english-020-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-english-020-2026.pdf","pdf_filename":"cg-board-class-12-model-paper-english-020-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-HINDI-010-2026","title":"CG-BOARD-CLASS-12-MODEL-PAPER-HINDI-010-2026","display_title":"Hindi 2026 (Model Paper) - MODEL PAPER 010 2026","subject":"Hindi","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-hindi-010-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-hindi-010-2026.pdf","pdf_filename":"cg-board-class-12-model-paper-hindi-010-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-201-2026","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-201-2026","display_title":"Physics 2026 (Model Paper) - MODEL PAPER 201 2026","subject":"Physics","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-201-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-201-2026.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-201-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BP-ENGLISH-GENERAL-002-2019","title":"CG-BOARD-CLASS-12-BP-ENGLISH-GENERAL-002-2019","display_title":"English 2019 (Main Paper) - BP GENERAL 002 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-english-general-002-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-english-general-002-2019.pdf","pdf_filename":"cg-board-class-12-bp-english-general-002-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BP-ENGLISH-SPECIAL-002-2019","title":"CG-BOARD-CLASS-12-BP-ENGLISH-SPECIAL-002-2019","display_title":"English 2019 (Main Paper) - BP SPECIAL 002 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-english-special-002-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-english-special-002-2019.pdf","pdf_filename":"cg-board-class-12-bp-english-special-002-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BP-HINDI-GENERAL-051-2019","title":"CG-BOARD-CLASS-12-BP-HINDI-GENERAL-051-2019","display_title":"Hindi 2019 (Main Paper) - BP GENERAL 051 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-hindi-general-051-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-hindi-general-051-2019.pdf","pdf_filename":"cg-board-class-12-bp-hindi-general-051-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-BP-HINDI-SPECIAL-001-2019","title":"CG-BOARD-CLASS-12-BP-HINDI-SPECIAL-001-2019","display_title":"Hindi 2019 (Main Paper) - BP SPECIAL 001 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-hindi-special-001-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-bp-hindi-special-001-2019.pdf","pdf_filename":"cg-board-class-12-bp-hindi-special-001-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-SET-A-203-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-SET-A-203-2019","display_title":"Biology 2019 (Set A) - MODEL PAPER SET A 203 2019","subject":"Biology","category":"Model & Blueprint","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-set-a-203-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-set-a-203-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-biology-set-a-203-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-SET-B-203-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-SET-B-203-2019","display_title":"Biology 2019 (Set B) - MODEL PAPER SET B 203 2019","subject":"Biology","category":"Model & Blueprint","year":"2019","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-set-b-203-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-set-b-203-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-biology-set-b-203-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-A-202-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-A-202-2019","display_title":"Chemistry 2019 (Set A) - MODEL PAPER SET A 202 2019","subject":"Chemistry","category":"Model & Blueprint","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-a-202-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-a-202-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-chemistry-set-a-202-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-B-202-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-B-202-2019","display_title":"Chemistry 2019 (Set B) - MODEL PAPER SET B 202 2019","subject":"Chemistry","category":"Model & Blueprint","year":"2019","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-b-202-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-b-202-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-chemistry-set-b-202-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-C-220-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-SET-C-220-2019","display_title":"Chemistry 2019 (Set C) - MODEL PAPER SET C 220 2019","subject":"Chemistry","category":"Model & Blueprint","year":"2019","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-c-220-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-set-c-220-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-chemistry-set-c-220-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-A-201-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-A-201-2019","display_title":"Physics 2019 (Set A) - MODEL PAPER SET A 201 2019","subject":"Physics","category":"Model & Blueprint","year":"2019","set":"Set A","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-a-201-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-a-201-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-set-a-201-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-B-201-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-B-201-2019","display_title":"Physics 2019 (Set B) - MODEL PAPER SET B 201 2019","subject":"Physics","category":"Model & Blueprint","year":"2019","set":"Set B","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-b-201-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-b-201-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-set-b-201-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-C-201-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-C-201-2019","display_title":"Physics 2019 (Set C) - MODEL PAPER SET C 201 2019","subject":"Physics","category":"Model & Blueprint","year":"2019","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-c-201-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-c-201-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-set-c-201-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-C-203-2019","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-SET-C-203-2019","display_title":"Physics 2019 (Set C) - MODEL PAPER SET C 203 2019","subject":"Physics","category":"Model & Blueprint","year":"2019","set":"Set C","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-c-203-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-set-c-203-2019.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-set-c-203-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-203","title":"CG-BOARD-CLASS-12-MODEL-PAPER-BIOLOGY-203","display_title":"Biology 2026 (Model Paper) - MODEL PAPER 203","subject":"Biology","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-203.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-biology-203.pdf","pdf_filename":"cg-board-class-12-model-paper-biology-203.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-202","title":"CG-BOARD-CLASS-12-MODEL-PAPER-CHEMISTRY-202","display_title":"Chemistry 2026 (Model Paper) - MODEL PAPER 202","subject":"Chemistry","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-202.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-chemistry-202.pdf","pdf_filename":"cg-board-class-12-model-paper-chemistry-202.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-ENGLISH-CORE-020","title":"CG-BOARD-CLASS-12-MODEL-PAPER-ENGLISH-CORE-020","display_title":"English 2026 (Model Paper) - MODEL PAPER CORE 020","subject":"English","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-english-core-020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-english-core-020.pdf","pdf_filename":"cg-board-class-12-model-paper-english-core-020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-HINDI-010","title":"CG-BOARD-CLASS-12-MODEL-PAPER-HINDI-010","display_title":"Hindi 2026 (Model Paper) - MODEL PAPER 010","subject":"Hindi","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-hindi-010.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-hindi-010.pdf","pdf_filename":"cg-board-class-12-model-paper-hindi-010.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-201","title":"CG-BOARD-CLASS-12-MODEL-PAPER-PHYSICS-201","display_title":"Physics 2026 (Model Paper) - MODEL PAPER 201","subject":"Physics","category":"Model & Blueprint","year":"2026","set":"Model Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-201.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-model-paper-physics-201.pdf","pdf_filename":"cg-board-class-12-model-paper-physics-201.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-CHEMISTRY-100426-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-CHEMISTRY-100426-2026","display_title":"Chemistry 2026 (Special Exam) - HALF YEARLY 100426 2026","subject":"Chemistry","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-chemistry-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-chemistry-100426-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-chemistry-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-ENGLISH-100426-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-ENGLISH-100426-2026","display_title":"English 2026 (Special Exam) - HALF YEARLY 100426 2026","subject":"English","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-english-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-english-100426-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-english-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-HINDI-100426-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-HINDI-100426-2026","display_title":"Hindi 2026 (Special Exam) - HALF YEARLY 100426 2026","subject":"Hindi","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-hindi-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-hindi-100426-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-hindi-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-PHYSICS-100426-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-PHYSICS-100426-2026","display_title":"Physics 2026 (Special Exam) - HALF YEARLY 100426 2026","subject":"Physics","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-physics-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-physics-100426-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-physics-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-BIOLOGY-090426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-BIOLOGY-090426-2026","display_title":"Biology 2026 (Pre-Board) - PRE BOARD 090426 2026","subject":"Biology","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-biology-090426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-biology-090426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-biology-090426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-BIOLOGY-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-BIOLOGY-100426-2026","display_title":"Biology 2026 (Pre-Board) - PRE BOARD 100426 2026","subject":"Biology","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-biology-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-biology-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-biology-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-CHEMISTRY-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-CHEMISTRY-100426-2026","display_title":"Chemistry 2026 (Pre-Board) - PRE BOARD 100426 2026","subject":"Chemistry","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-chemistry-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-chemistry-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-chemistry-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-CHEMISTRY-202-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-CHEMISTRY-202-100426-2026","display_title":"Chemistry 2026 (Pre-Board) - PRE BOARD 202 100426 2026","subject":"Chemistry","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-chemistry-202-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-chemistry-202-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-chemistry-202-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-ENGLISH-020-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-ENGLISH-020-100426-2026","display_title":"English 2026 (Pre-Board) - PRE BOARD 020 100426 2026","subject":"English","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-english-020-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-english-020-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-english-020-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-ENGLISH-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-ENGLISH-100426-2026","display_title":"English 2026 (Pre-Board) - PRE BOARD 100426 2026","subject":"English","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-english-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-english-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-english-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-HINDI-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-HINDI-100426-2026","display_title":"Hindi 2026 (Pre-Board) - PRE BOARD 100426 2026","subject":"Hindi","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-hindi-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-hindi-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-hindi-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-PHYSICS-090426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-PHYSICS-090426-2026","display_title":"Physics 2026 (Pre-Board) - PRE BOARD 090426 2026","subject":"Physics","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-physics-090426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-physics-090426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-physics-090426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PRE-BOARD-PHYSICS-100426-2026","title":"CG-BOARD-CLASS-12-PRE-BOARD-PHYSICS-100426-2026","display_title":"Physics 2026 (Pre-Board) - PRE BOARD 100426 2026","subject":"Physics","category":"Pre-Board Papers","year":"2026","set":"Pre-Board","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-physics-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pre-board-physics-100426-2026.pdf","pdf_filename":"cg-board-class-12-pre-board-physics-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-HINDI-240625-2025","title":"CG-BOARD-CLASS-12-PB-HINDI-240625-2025","display_title":"Hindi 2025 (Main Paper) - PB 240625 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-240625-2025.pdf","pdf_filename":"cg-board-class-12-pb-hindi-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-PHYSICS-240625-2025","title":"CG-BOARD-CLASS-12-PB-PHYSICS-240625-2025","display_title":"Physics 2025 (Main Paper) - PB 240625 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-physics-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-physics-240625-2025.pdf","pdf_filename":"cg-board-class-12-pb-physics-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-CHEMISTRY-006-2020","title":"CG-BOARD-CLASS-12-PB-CHEMISTRY-006-2020","display_title":"Chemistry 2020 (Main Paper) - PB 006 2020","subject":"Chemistry","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-006-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-006-2020.pdf","pdf_filename":"cg-board-class-12-pb-chemistry-006-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-PHYSICS-006-2020","title":"CG-BOARD-CLASS-12-PB-PHYSICS-006-2020","display_title":"Physics 2020 (Main Paper) - PB 006 2020","subject":"Physics","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-physics-006-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-physics-006-2020.pdf","pdf_filename":"cg-board-class-12-pb-physics-006-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-CHEMISTRY-2019","title":"CG-BOARD-CLASS-12-PB-CHEMISTRY-2019","display_title":"Chemistry 2019 (Main Paper) - PB 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-2019.pdf","pdf_filename":"cg-board-class-12-pb-chemistry-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-HINDI-2019","title":"CG-BOARD-CLASS-12-PB-HINDI-2019","display_title":"Hindi 2019 (Main Paper) - PB 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-2019.pdf","pdf_filename":"cg-board-class-12-pb-hindi-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-ENGLISH-002-2018","title":"CG-BOARD-CLASS-12-PB-ENGLISH-002-2018","display_title":"English 2018 (Main Paper) - PB 002 2018","subject":"English","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-english-002-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-english-002-2018.pdf","pdf_filename":"cg-board-class-12-pb-english-002-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-HINDI-SPECIAL-002-2018","title":"CG-BOARD-CLASS-12-PB-HINDI-SPECIAL-002-2018","display_title":"Hindi 2018 (Main Paper) - PB SPECIAL 002 2018","subject":"Hindi","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-special-002-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-hindi-special-002-2018.pdf","pdf_filename":"cg-board-class-12-pb-hindi-special-002-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-BIOLOGY-231225-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-BIOLOGY-231225-2026","display_title":"Biology 2026 (Special Exam) - HALF YEARLY 231225 2026","subject":"Biology","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-biology-231225-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-biology-231225-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-biology-231225-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-CHEMISTRY-231225-2026","title":"CG-BOARD-CLASS-12-HALF-YEARLY-CHEMISTRY-231225-2026","display_title":"Chemistry 2026 (Special Exam) - HALF YEARLY 231225 2026","subject":"Chemistry","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-chemistry-231225-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-chemistry-231225-2026.pdf","pdf_filename":"cg-board-class-12-half-yearly-chemistry-231225-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HALF-YEARLY-BIOLOGY-100426-2025","title":"CG-BOARD-CLASS-12-HALF-YEARLY-BIOLOGY-100426-2025","display_title":"Biology 2025 (Special Exam) - HALF YEARLY 100426 2025","subject":"Biology","category":"Half-Yearly & Quarterly","year":"2025","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-biology-100426-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-half-yearly-biology-100426-2025.pdf","pdf_filename":"cg-board-class-12-half-yearly-biology-100426-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-ENGLISH-221224-2025","title":"CG-BOARD-CLASS-12-HY-ENGLISH-221224-2025","display_title":"English 2025 (Main Paper) - HY 221224 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-221224-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-221224-2025.pdf","pdf_filename":"cg-board-class-12-hy-english-221224-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-HINDI-221224-2025","title":"CG-BOARD-CLASS-12-HY-HINDI-221224-2025","display_title":"Hindi 2025 (Main Paper) - HY 221224 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-221224-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-221224-2025.pdf","pdf_filename":"cg-board-class-12-hy-hindi-221224-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-PHYSICS-221224-2025","title":"CG-BOARD-CLASS-12-HY-PHYSICS-221224-2025","display_title":"Physics 2025 (Main Paper) - HY 221224 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-221224-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-221224-2025.pdf","pdf_filename":"cg-board-class-12-hy-physics-221224-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-CHEMISTRY-240625-2025","title":"CG-BOARD-CLASS-12-PB-CHEMISTRY-240625-2025","display_title":"Chemistry 2025 (Main Paper) - PB 240625 2025","subject":"Chemistry","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-chemistry-240625-2025.pdf","pdf_filename":"cg-board-class-12-pb-chemistry-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-PHYSICS-040423-2023","title":"CG-BOARD-CLASS-12-HY-PHYSICS-040423-2023","display_title":"Physics 2023 (Main Paper) - HY 040423 2023","subject":"Physics","category":"Final Board Papers","year":"2023","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-040423-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-040423-2023.pdf","pdf_filename":"cg-board-class-12-hy-physics-040423-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-0306050622-2022-050622-2022","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-0306050622-2022-050622-2022","display_title":"Chemistry 2022 (Main Paper) - HY 0306050622 2022 050622 2022","subject":"Chemistry","category":"Final Board Papers","year":"2022","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-0306050622-2022-050622-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-0306050622-2022-050622-2022.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-0306050622-2022-050622-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-0306050622-2022-V2-050622-2022","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-0306050622-2022-V2-050622-2022","display_title":"Chemistry 2022 (Main Paper) - HY 0306050622 2022 V2 050622 2022","subject":"Chemistry","category":"Final Board Papers","year":"2022","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-0306050622-2022-v2-050622-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-0306050622-2022-v2-050622-2022.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-0306050622-2022-v2-050622-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-ENGLISH-040423-2022","title":"CG-BOARD-CLASS-12-HY-ENGLISH-040423-2022","display_title":"English 2022 (Main Paper) - HY 040423 2022","subject":"English","category":"Final Board Papers","year":"2022","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-040423-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-040423-2022.pdf","pdf_filename":"cg-board-class-12-hy-english-040423-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-HINDI-0306050622-2022-050622-2022","title":"CG-BOARD-CLASS-12-HY-HINDI-0306050622-2022-050622-2022","display_title":"Hindi 2022 (Main Paper) - HY 0306050622 2022 050622 2022","subject":"Hindi","category":"Final Board Papers","year":"2022","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-0306050622-2022-050622-2022.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-0306050622-2022-050622-2022.pdf","pdf_filename":"cg-board-class-12-hy-hindi-0306050622-2022-050622-2022.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-XIIHY-202202-2020","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-XIIHY-202202-2020","display_title":"Chemistry 2020 (Main Paper) - HY XIIHY 202202 2020","subject":"Chemistry","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-xiihy-202202-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-xiihy-202202-2020.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-xiihy-202202-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-ENGLISH-XIIHY-202020-2020","title":"CG-BOARD-CLASS-12-HY-ENGLISH-XIIHY-202020-2020","display_title":"English 2020 (Main Paper) - HY XIIHY 202020 2020","subject":"English","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-xiihy-202020-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-xiihy-202020-2020.pdf","pdf_filename":"cg-board-class-12-hy-english-xiihy-202020-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-HINDI-XIIHY-202010-2020","title":"CG-BOARD-CLASS-12-HY-HINDI-XIIHY-202010-2020","display_title":"Hindi 2020 (Main Paper) - HY XIIHY 202010 2020","subject":"Hindi","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-xiihy-202010-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-xiihy-202010-2020.pdf","pdf_filename":"cg-board-class-12-hy-hindi-xiihy-202010-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-PHYSICS-XIIXY-202201-2020","title":"CG-BOARD-CLASS-12-HY-PHYSICS-XIIXY-202201-2020","display_title":"Physics 2020 (Main Paper) - HY XIIXY 202201 2020","subject":"Physics","category":"Final Board Papers","year":"2020","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-xiixy-202201-2020.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-xiixy-202201-2020.pdf","pdf_filename":"cg-board-class-12-hy-physics-xiixy-202201-2020.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-E-HY-ENGLISH-03-2019","title":"CG-BOARD-CLASS-12-E-HY-ENGLISH-03-2019","display_title":"English 2019 (Main Paper) - E HY 03 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-e-hy-english-03-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-e-hy-english-03-2019.pdf","pdf_filename":"cg-board-class-12-e-hy-english-03-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-H-HY-BIOLOGY-03-2019","title":"CG-BOARD-CLASS-12-H-HY-BIOLOGY-03-2019","display_title":"Biology 2019 (Main Paper) - H HY 03 2019","subject":"Biology","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-biology-03-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-biology-03-2019.pdf","pdf_filename":"cg-board-class-12-h-hy-biology-03-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-H-HY-CHEMISTRY-03-2019","title":"CG-BOARD-CLASS-12-H-HY-CHEMISTRY-03-2019","display_title":"Chemistry 2019 (Main Paper) - H HY 03 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-chemistry-03-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-chemistry-03-2019.pdf","pdf_filename":"cg-board-class-12-h-hy-chemistry-03-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-H-HY-HINDI-03-2019","title":"CG-BOARD-CLASS-12-H-HY-HINDI-03-2019","display_title":"Hindi 2019 (Main Paper) - H HY 03 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-hindi-03-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-hindi-03-2019.pdf","pdf_filename":"cg-board-class-12-h-hy-hindi-03-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-H-HY-PHYSICS-03-2019","title":"CG-BOARD-CLASS-12-H-HY-PHYSICS-03-2019","display_title":"Physics 2019 (Main Paper) - H HY 03 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-physics-03-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-h-hy-physics-03-2019.pdf","pdf_filename":"cg-board-class-12-h-hy-physics-03-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-BIOLOGY-07-2019","title":"CG-BOARD-CLASS-12-HY-BIOLOGY-07-2019","display_title":"Biology 2019 (Main Paper) - HY 07 2019","subject":"Biology","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-07-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-07-2019.pdf","pdf_filename":"cg-board-class-12-hy-biology-07-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-BIOLOGY-AKT-2019","title":"CG-BOARD-CLASS-12-HY-BIOLOGY-AKT-2019","display_title":"Biology 2019 (Main Paper) - HY AKT 2019","subject":"Biology","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-akt-2019.pdf","pdf_filename":"cg-board-class-12-hy-biology-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-07-2019","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-07-2019","display_title":"Chemistry 2019 (Main Paper) - HY 07 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-07-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-07-2019.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-07-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-AKT-2019","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-AKT-2019","display_title":"Chemistry 2019 (Main Paper) - HY AKT 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-akt-2019.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-ENGLISH-AKT-2019","title":"CG-BOARD-CLASS-12-HY-ENGLISH-AKT-2019","display_title":"English 2019 (Main Paper) - HY AKT 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-akt-2019.pdf","pdf_filename":"cg-board-class-12-hy-english-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-PHYSICS-AKT-2019","title":"CG-BOARD-CLASS-12-HY-PHYSICS-AKT-2019","display_title":"Physics 2019 (Main Paper) - HY AKT 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-akt-2019.pdf","pdf_filename":"cg-board-class-12-hy-physics-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-BIOLOGY-2018","title":"CG-BOARD-CLASS-12-HY-BIOLOGY-2018","display_title":"Biology 2018 (Main Paper) - HY 2018","subject":"Biology","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-biology-2018.pdf","pdf_filename":"cg-board-class-12-hy-biology-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-CHEMISTRY-2018","title":"CG-BOARD-CLASS-12-HY-CHEMISTRY-2018","display_title":"Chemistry 2018 (Main Paper) - HY 2018","subject":"Chemistry","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-chemistry-2018.pdf","pdf_filename":"cg-board-class-12-hy-chemistry-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-ENGLISH-2018","title":"CG-BOARD-CLASS-12-HY-ENGLISH-2018","display_title":"English 2018 (Main Paper) - HY 2018","subject":"English","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-english-2018.pdf","pdf_filename":"cg-board-class-12-hy-english-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-HINDI-2018","title":"CG-BOARD-CLASS-12-HY-HINDI-2018","display_title":"Hindi 2018 (Main Paper) - HY 2018","subject":"Hindi","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-hindi-2018.pdf","pdf_filename":"cg-board-class-12-hy-hindi-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-HY-PHYSICS-2018","title":"CG-BOARD-CLASS-12-HY-PHYSICS-2018","display_title":"Physics 2018 (Main Paper) - HY 2018","subject":"Physics","category":"Final Board Papers","year":"2018","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-2018.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-hy-physics-2018.pdf","pdf_filename":"cg-board-class-12-hy-physics-2018.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-012925-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-012925-2026","display_title":"Biology 2026 (Special Exam) - QUARTERLY 012925 2026","subject":"Biology","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-012925-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-012925-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-biology-012925-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-231225-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-231225-2026","display_title":"Biology 2026 (Special Exam) - QUARTERLY 231225 2026","subject":"Biology","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-231225-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-231225-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-biology-231225-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-CHEMISTRY-012925-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-CHEMISTRY-012925-2026","display_title":"Chemistry 2026 (Special Exam) - QUARTERLY 012925 2026","subject":"Chemistry","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-chemistry-012925-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-chemistry-012925-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-chemistry-012925-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-012925-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-012925-2026","display_title":"English 2026 (Special Exam) - QUARTERLY 012925 2026","subject":"English","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-012925-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-012925-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-english-012925-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-100426-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-100426-2026","display_title":"English 2026 (Special Exam) - QUARTERLY 100426 2026","subject":"English","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-100426-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-english-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-231225-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-ENGLISH-231225-2026","display_title":"English 2026 (Special Exam) - QUARTERLY 231225 2026","subject":"English","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-231225-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-english-231225-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-english-231225-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-012925-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-012925-2026","display_title":"Hindi 2026 (Special Exam) - QUARTERLY 012925 2026","subject":"Hindi","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-012925-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-012925-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-hindi-012925-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-231225-OCT-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-231225-OCT-2026","display_title":"Hindi 2026 (Special Exam) - QUARTERLY 231225 OCT 2026","subject":"Hindi","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-231225-oct-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-231225-oct-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-hindi-231225-oct-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-012925-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-012925-2026","display_title":"Physics 2026 (Special Exam) - QUARTERLY 012925 2026","subject":"Physics","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-012925-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-012925-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-physics-012925-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-100426-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-100426-2026","display_title":"Physics 2026 (Special Exam) - QUARTERLY 100426 2026","subject":"Physics","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-100426-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-100426-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-physics-100426-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-231225-2026","title":"CG-BOARD-CLASS-12-QUARTERLY-PHYSICS-231225-2026","display_title":"Physics 2026 (Special Exam) - QUARTERLY 231225 2026","subject":"Physics","category":"Half-Yearly & Quarterly","year":"2026","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-231225-2026.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-physics-231225-2026.pdf","pdf_filename":"cg-board-class-12-quarterly-physics-231225-2026.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MONTHLY-ENGLISH-231225-JUL-2025","title":"CG-BOARD-CLASS-12-MONTHLY-ENGLISH-231225-JUL-2025","display_title":"English 2025 (Main Paper) - MONTHLY 231225 JUL 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-english-231225-jul-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-english-231225-jul-2025.pdf","pdf_filename":"cg-board-class-12-monthly-english-231225-jul-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MONTHLY-ENGLISH-231225-OCT-2025","title":"CG-BOARD-CLASS-12-MONTHLY-ENGLISH-231225-OCT-2025","display_title":"English 2025 (Main Paper) - MONTHLY 231225 OCT 2025","subject":"English","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-english-231225-oct-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-english-231225-oct-2025.pdf","pdf_filename":"cg-board-class-12-monthly-english-231225-oct-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MONTHLY-HINDI-231225-AUG-2025","title":"CG-BOARD-CLASS-12-MONTHLY-HINDI-231225-AUG-2025","display_title":"Hindi 2025 (Main Paper) - MONTHLY 231225 AUG 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-hindi-231225-aug-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-hindi-231225-aug-2025.pdf","pdf_filename":"cg-board-class-12-monthly-hindi-231225-aug-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-MONTHLY-HINDI-231225-JUL-2025","title":"CG-BOARD-CLASS-12-MONTHLY-HINDI-231225-JUL-2025","display_title":"Hindi 2025 (Main Paper) - MONTHLY 231225 JUL 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-hindi-231225-jul-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-monthly-hindi-231225-jul-2025.pdf","pdf_filename":"cg-board-class-12-monthly-hindi-231225-jul-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-PB-BIOLOGY-240625-2025","title":"CG-BOARD-CLASS-12-PB-BIOLOGY-240625-2025","display_title":"Biology 2025 (Main Paper) - PB 240625 2025","subject":"Biology","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-biology-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-pb-biology-240625-2025.pdf","pdf_filename":"cg-board-class-12-pb-biology-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-240625-2025","title":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-240625-2025","display_title":"Chemistry 2025 (Main Paper) - QTR 240625 2025","subject":"Chemistry","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-240625-2025.pdf","pdf_filename":"cg-board-class-12-qtr-chemistry-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-HINDI-240625-2025","title":"CG-BOARD-CLASS-12-QTR-HINDI-240625-2025","display_title":"Hindi 2025 (Main Paper) - QTR 240625 2025","subject":"Hindi","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-240625-2025.pdf","pdf_filename":"cg-board-class-12-qtr-hindi-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-PHYSICS-240625-2025","title":"CG-BOARD-CLASS-12-QTR-PHYSICS-240625-2025","display_title":"Physics 2025 (Main Paper) - QTR 240625 2025","subject":"Physics","category":"Final Board Papers","year":"2025","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-physics-240625-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-physics-240625-2025.pdf","pdf_filename":"cg-board-class-12-qtr-physics-240625-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-100426-2025","title":"CG-BOARD-CLASS-12-QUARTERLY-BIOLOGY-100426-2025","display_title":"Biology 2025 (Special Exam) - QUARTERLY 100426 2025","subject":"Biology","category":"Half-Yearly & Quarterly","year":"2025","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-100426-2025.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-biology-100426-2025.pdf","pdf_filename":"cg-board-class-12-quarterly-biology-100426-2025.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-100426-2023","title":"CG-BOARD-CLASS-12-QUARTERLY-HINDI-100426-2023","display_title":"Hindi 2023 (Special Exam) - QUARTERLY 100426 2023","subject":"Hindi","category":"Half-Yearly & Quarterly","year":"2023","set":"Special Exam","url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-100426-2023.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-quarterly-hindi-100426-2023.pdf","pdf_filename":"cg-board-class-12-quarterly-hindi-100426-2023.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-29032022-2021","title":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-29032022-2021","display_title":"Chemistry 2021 (Main Paper) - QTR 29032022 2021","subject":"Chemistry","category":"Final Board Papers","year":"2021","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-29032022-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-29032022-2021.pdf","pdf_filename":"cg-board-class-12-qtr-chemistry-29032022-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-ENGLISH-29032022-2021","title":"CG-BOARD-CLASS-12-QTR-ENGLISH-29032022-2021","display_title":"English 2021 (Main Paper) - QTR 29032022 2021","subject":"English","category":"Final Board Papers","year":"2021","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-english-29032022-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-english-29032022-2021.pdf","pdf_filename":"cg-board-class-12-qtr-english-29032022-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-HINDI-29032022-2021","title":"CG-BOARD-CLASS-12-QTR-HINDI-29032022-2021","display_title":"Hindi 2021 (Main Paper) - QTR 29032022 2021","subject":"Hindi","category":"Final Board Papers","year":"2021","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-29032022-2021.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-29032022-2021.pdf","pdf_filename":"cg-board-class-12-qtr-hindi-29032022-2021.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-BIOLOGY-AKT-2019","title":"CG-BOARD-CLASS-12-QTR-BIOLOGY-AKT-2019","display_title":"Biology 2019 (Main Paper) - QTR AKT 2019","subject":"Biology","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-biology-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-biology-akt-2019.pdf","pdf_filename":"cg-board-class-12-qtr-biology-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-AKT-2019","title":"CG-BOARD-CLASS-12-QTR-CHEMISTRY-AKT-2019","display_title":"Chemistry 2019 (Main Paper) - QTR AKT 2019","subject":"Chemistry","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-chemistry-akt-2019.pdf","pdf_filename":"cg-board-class-12-qtr-chemistry-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-ENGLISH-AKT-2019","title":"CG-BOARD-CLASS-12-QTR-ENGLISH-AKT-2019","display_title":"English 2019 (Main Paper) - QTR AKT 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-english-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-english-akt-2019.pdf","pdf_filename":"cg-board-class-12-qtr-english-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-HINDI-AKT-2019","title":"CG-BOARD-CLASS-12-QTR-HINDI-AKT-2019","display_title":"Hindi 2019 (Main Paper) - QTR AKT 2019","subject":"Hindi","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-hindi-akt-2019.pdf","pdf_filename":"cg-board-class-12-qtr-hindi-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QTR-PHYSICS-AKT-2019","title":"CG-BOARD-CLASS-12-QTR-PHYSICS-AKT-2019","display_title":"Physics 2019 (Main Paper) - QTR AKT 2019","subject":"Physics","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-physics-akt-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qtr-physics-akt-2019.pdf","pdf_filename":"cg-board-class-12-qtr-physics-akt-2019.pdf","local_pdf":null},{"id":"CG-BOARD-CLASS-12-QY-ENGLISH-2019","title":"CG-BOARD-CLASS-12-QY-ENGLISH-2019","display_title":"English 2019 (Main Paper) - QY 2019","subject":"English","category":"Final Board Papers","year":"2019","set":"Main Paper","url":"https://www.cgboardonline.com/papers/cg-board-class-12-qy-english-2019.html","pdf_url":"https://www.cgboardonline.com/papers/cg-board-class-12-qy-english-2019.pdf","pdf_filename":"cg-board-class-12-qy-english-2019.pdf","local_pdf":null}];
 
         let currentSubject = '';
+        let currentCategory = '';
+        let currentYear = '';
+        let isOnlyFavs = false;
+        let favorites = JSON.parse(localStorage.getItem('kiran_fav_papers') || '[]');
 
+        function getSubjectIcon(sub) {
+            switch((sub || '').toLowerCase()) {
+                case 'physics': return '<i class="fa-solid fa-atom"></i>';
+                case 'biology': return '<i class="fa-solid fa-dna"></i>';
+                case 'chemistry': return '<i class="fa-solid fa-flask-vial"></i>';
+                case 'hindi': return '<i class="fa-solid fa-feather-pointed"></i>';
+                case 'english': return '<i class="fa-solid fa-book-open"></i>';
+                default: return '<i class="fa-solid fa-book"></i>';
+            }
+        }
+
+        function getCategoryIcon(cat) {
+            const c = (cat || '').toLowerCase();
+            if (c.includes('final')) return '<i class="fa-solid fa-award"></i>';
+            if (c.includes('model') || c.includes('blueprint')) return '<i class="fa-solid fa-file-circle-check"></i>';
+            if (c.includes('pre')) return '<i class="fa-solid fa-clipboard-check"></i>';
+            return '<i class="fa-solid fa-calendar-week"></i>';
+        }
+
+        // Favorites management
+        updateFavCount();
+
+        function updateFavCount() {
+            document.getElementById('favCount').innerText = favorites.length;
+        }
+
+        function toggleFav(id, event) {
+            if (event) event.stopPropagation();
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                showToast("Paper removed from saved list");
+            } else {
+                favorites.push(id);
+                showToast("Paper saved to list! ⭐");
+            }
+            localStorage.setItem('kiran_fav_papers', JSON.stringify(favorites));
+            updateFavCount();
+
+            if (isOnlyFavs) {
+                renderFavoritesView();
+            } else if (currentYear) {
+                selectYear(currentYear);
+            } else {
+                handleSearch();
+            }
+        }
+
+        function toggleFavsView() {
+            isOnlyFavs = true;
+            currentSubject = '';
+            currentCategory = '';
+            currentYear = '';
+            hideAll();
+            updateBreadcrumb();
+
+            document.getElementById('set-title').innerHTML = '<i class="fa-solid fa-star"></i> Saved Papers';
+            document.getElementById('set-back-btn').onclick = () => goHome();
+
+            renderFavoritesView();
+        }
+
+        function renderFavoritesView() {
+            const listContainer = document.getElementById('sets-list');
+            listContainer.innerHTML = '';
+
+            const favPapers = fullDataset.filter(p => favorites.includes(p.id));
+
+            if (favPapers.length === 0) {
+                listContainer.innerHTML = '<div style="text-align:center; padding: 30px; color: var(--text-muted); font-size: 1rem;"><i class="fa-regular fa-star" style="font-size:2.2rem; margin-bottom:10px; display:block; color:var(--accent-primary);"></i>No saved papers yet! Click the ⭐ icon on any paper to save it for quick access.</div>';
+            } else {
+                favPapers.forEach(paper => renderSetCard(paper, listContainer));
+            }
+
+            showSection('set-section');
+        }
+
+        // Toast feedback
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const themeBtn = document.getElementById('themeBtn');
+            if (currentTheme === 'night') {
+                document.body.removeAttribute('data-theme');
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Night Mode';
+                localStorage.setItem('kiran_theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'night');
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+                localStorage.setItem('kiran_theme', 'night');
+            }
+        }
+
+        // Restore saved theme
+        if (localStorage.getItem('kiran_theme') === 'night') {
+            document.body.setAttribute('data-theme', 'night');
+            document.getElementById('themeBtn').innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+        }
+
+        // Navigation helpers
         function hideAll() {
             document.getElementById('subject-section').classList.add('hidden');
+            document.getElementById('category-section').classList.add('hidden');
             document.getElementById('year-section').classList.add('hidden');
-            document.getElementById('paper-section').classList.add('hidden');
-            
-            document.getElementById('subject-section').classList.remove('fade-in');
-            document.getElementById('year-section').classList.remove('fade-in');
-            document.getElementById('paper-section').classList.remove('fade-in');
+            document.getElementById('set-section').classList.add('hidden');
+            document.getElementById('search-section').classList.add('hidden');
         }
 
         function showSection(id) {
-            const el = document.getElementById(id);
-            el.classList.remove('hidden');
-            void el.offsetWidth;
-            el.classList.add('fade-in');
+            const section = document.getElementById(id);
+            section.classList.remove('hidden');
+            section.classList.add('fade-in');
         }
 
-        function showYears(subject) {
-            currentSubject = subject;
+        function updateBreadcrumb() {
+            const container = document.getElementById('breadcrumb');
+            let html = '<span class="breadcrumb-item" onclick="goHome()"><i class="fa-solid fa-house"></i> Home</span>';
+
+            if (isOnlyFavs) {
+                html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item breadcrumb-active"><i class="fa-solid fa-star"></i> Saved Papers</span>';
+            } else if (currentSubject) {
+                if (!currentCategory) {
+                    html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item breadcrumb-active">' + currentSubject + '</span>';
+                } else {
+                    html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item" onclick="selectSubject(\'' + currentSubject + '\')">' + currentSubject + '</span>';
+                    if (!currentYear) {
+                        html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item breadcrumb-active">' + currentCategory + '</span>';
+                    } else {
+                        html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item" onclick="selectCategory(\'' + currentCategory + '\')">' + currentCategory + '</span>';
+                        html += '<span class="breadcrumb-sep">/</span><span class="breadcrumb-item breadcrumb-active">Year ' + currentYear + '</span>';
+                    }
+                }
+            }
+
+            container.innerHTML = html;
+        }
+
+        function goHome() {
+            currentSubject = '';
+            currentCategory = '';
+            currentYear = '';
+            isOnlyFavs = false;
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').style.display = 'none';
             hideAll();
+            updateBreadcrumb();
+            showSection('subject-section');
+        }
+
+        function goBackToCategory() {
+            selectSubject(currentSubject);
+        }
+
+        function goBackToYear() {
+            selectCategory(currentCategory);
+        }
+
+        // STEP 1: Select Subject
+        function selectSubject(subject) {
+            currentSubject = subject;
+            currentCategory = '';
+            currentYear = '';
+            isOnlyFavs = false;
+            hideAll();
+            updateBreadcrumb();
+
+            document.getElementById('category-title').innerHTML = '<i class="fa-solid fa-folder-tree"></i> Select Category (' + subject + ')';
+            const catContainer = document.getElementById('category-buttons');
+            catContainer.innerHTML = '';
+
+            const subjectPapers = fullDataset.filter(p => p.subject.toLowerCase() === subject.toLowerCase());
+            const categoriesSet = [...new Set(subjectPapers.map(p => p.category))];
+
+            categoriesSet.forEach(cat => {
+                const count = subjectPapers.filter(p => p.category === cat).length;
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.onclick = () => selectCategory(cat);
+                card.innerHTML = `
+                    <div class="category-icon-bg">${getCategoryIcon(cat)}</div>
+                    <div class="category-details">
+                        <h4>${cat}</h4>
+                        <p>${count} ${count === 1 ? 'Paper' : 'Papers'} Available</p>
+                    </div>
+                `;
+                catContainer.appendChild(card);
+            });
+
+            showSection('category-section');
+        }
+
+        // STEP 2: Select Category
+        function selectCategory(category) {
+            currentCategory = category;
+            currentYear = '';
+            hideAll();
+            updateBreadcrumb();
             
-            const subjectName = subject.charAt(0).toUpperCase() + subject.slice(1);
-            document.getElementById('year-title').innerText = subjectName + " Papers";
+            document.getElementById('year-title').innerHTML = '<i class="fa-solid fa-calendar"></i> Select Year (' + currentSubject + ' - ' + category + ')';
             
             const yearContainer = document.getElementById('year-buttons');
             yearContainer.innerHTML = '';
-            
-            const years = Object.keys(data[subject]).sort((a, b) => b - a);
-            
-            years.forEach(year => {
-                const btn = document.createElement('button');
-                btn.className = 'year-btn';
-                btn.innerText = "Year " + year;
-                btn.onclick = () => showPapers(year);
-                yearContainer.appendChild(btn);
+
+            const categoryPapers = fullDataset.filter(p => {
+                return p.subject.toLowerCase() === currentSubject.toLowerCase() && p.category === category;
             });
-            
+
+            const yearsSet = [...new Set(categoryPapers.map(p => p.year))].sort((a, b) => b.localeCompare(a));
+
+            if (yearsSet.length === 0) {
+                yearContainer.innerHTML = '<p style="color:var(--text-muted); padding: 15px;">No papers found in this category.</p>';
+            } else {
+                yearsSet.forEach(year => {
+                    const count = categoryPapers.filter(p => p.year === year).length;
+                    const btn = document.createElement('button');
+                    btn.className = 'year-btn';
+                    btn.innerHTML = `
+                        <span><i class="fa-solid fa-calendar-days"></i> Year ${year}</span>
+                        <span class="year-count">${count} ${count === 1 ? 'Paper' : 'Sets'}</span>
+                    `;
+                    btn.onclick = () => selectYear(year);
+                    yearContainer.appendChild(btn);
+                });
+            }
+
             showSection('year-section');
         }
 
-        function showPapers(year) {
+        // STEP 3: Select Year & Render Sets
+        function selectYear(year) {
+            currentYear = year;
             hideAll();
-            
-            const subjectName = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
-            document.getElementById('paper-title').innerText = subjectName + " (" + year + ")";
-            
-            const listContainer = document.getElementById('papers-list');
+            updateBreadcrumb();
+
+            document.getElementById('set-title').innerHTML = '<i class="fa-solid fa-file-pdf"></i> Available Papers (' + currentSubject + ' ' + year + ')';
+            document.getElementById('set-back-btn').onclick = () => goBackToYear();
+
+            const listContainer = document.getElementById('sets-list');
             listContainer.innerHTML = '';
-            
-            const papers = data[currentSubject][year];
-            papers.forEach(paper => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = paper.file;
-                a.target = "_blank";
-                a.innerText = paper.name;
-                li.appendChild(a);
-                listContainer.appendChild(li);
+
+            const matchingPapers = fullDataset.filter(p => {
+                return p.subject.toLowerCase() === currentSubject.toLowerCase() && p.year === year && p.category === currentCategory;
             });
-            
-            showSection('paper-section');
+
+            if (matchingPapers.length === 0) {
+                listContainer.innerHTML = '<div style="text-align:center; padding: 25px; color: var(--text-muted);">No sets found for this selection.</div>';
+            } else {
+                matchingPapers.forEach(paper => renderSetCard(paper, listContainer));
+            }
+
+            showSection('set-section');
         }
 
-        function goBack(targetId) {
+        // Direct Open PDF
+        function openPdfDirectly(pdfUrl) {
+            window.open(pdfUrl, '_blank');
+        }
+
+        // Copy PDF Link
+        function copyPdfLink(pdfUrl, event) {
+            if (event) event.stopPropagation();
+            navigator.clipboard.writeText(pdfUrl).then(() => {
+                showToast("PDF Link copied to clipboard! 📋");
+            }).catch(() => {
+                showToast("Failed to copy link");
+            });
+        }
+
+        // Render Card for each Set
+        function renderSetCard(paper, container) {
+            const card = document.createElement('div');
+            card.className = 'set-card';
+
+            const isFav = favorites.includes(paper.id);
+            const pdfUrl = paper.local_pdf || paper.pdf_url;
+            const paperCode = paper.id.replace('CG-BOARD-CLASS-12-', '');
+
+            card.innerHTML = `
+                <div class="set-info">
+                    <div class="set-title">
+                        <span class="set-badge"><i class="fa-solid fa-layer-group"></i> ${paper.set}</span>
+                        <span class="set-code-tag"><i class="fa-solid fa-hashtag"></i> ${paperCode}</span>
+                    </div>
+                    <div class="set-meta">
+                        <span class="badge-cat">${getCategoryIcon(paper.category)} ${paper.category}</span>
+                        <span>${getSubjectIcon(paper.subject)} ${paper.subject}</span>
+                        <span><i class="fa-solid fa-calendar-days"></i> ${paper.year}</span>
+                    </div>
+                </div>
+                <div class="action-btns">
+                    <button class="fav-btn ${isFav ? 'active' : ''}" title="${isFav ? 'Remove from saved' : 'Save paper'}" onclick="toggleFav('${paper.id}', event)">
+                        <i class="fa-${isFav ? 'solid' : 'regular'} fa-star"></i>
+                    </button>
+                    <button class="btn-copy-link" title="Copy PDF Link" onclick="copyPdfLink('${pdfUrl}', event)">
+                        <i class="fa-solid fa-link"></i>
+                    </button>
+                    <button onclick="openPdfDirectly('${pdfUrl}')" class="btn-direct-pdf">
+                        <i class="fa-solid fa-file-pdf"></i> Open PDF
+                    </button>
+                </div>
+            `;
+
+            container.appendChild(card);
+        }
+
+        // Live Search Handling
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            if (query.length === 0) {
+                clearBtn.style.display = 'none';
+                if (!currentSubject && !isOnlyFavs) {
+                    goHome();
+                }
+                return;
+            }
+
+            clearBtn.style.display = 'flex';
             hideAll();
-            showSection(targetId);
+
+            const searchResults = fullDataset.filter(p => {
+                const subStr = p.subject.toLowerCase();
+                const yrStr = p.year.toLowerCase();
+                const setStr = p.set.toLowerCase();
+                const catStr = p.category.toLowerCase();
+                const idStr = p.id.toLowerCase();
+
+                return subStr.includes(query) || yrStr.includes(query) || setStr.includes(query) || catStr.includes(query) || idStr.includes(query);
+            });
+
+            document.getElementById('search-subtitle').innerText = `Found ${searchResults.length} matching paper${searchResults.length === 1 ? '' : 's'} for "${query}"`;
+
+            const listContainer = document.getElementById('search-results-list');
+            listContainer.innerHTML = '';
+
+            if (searchResults.length === 0) {
+                listContainer.innerHTML = '<div style="text-align:center; padding: 25px; color: var(--text-muted); font-size:1rem;">No matching question papers found. Try searching by subject (e.g. Physics), year (e.g. 2026), or set (Set A).</div>';
+            } else {
+                searchResults.forEach(paper => renderSetCard(paper, listContainer));
+            }
+
+            showSection('search-section');
         }
 
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').style.display = 'none';
+            goHome();
+        }
     </script>
 </body>
 </html>
